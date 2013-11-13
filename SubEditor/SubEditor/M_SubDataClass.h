@@ -48,7 +48,7 @@ public:
 	int size();
 	bool empty();
 	void insert(nodeData^ data);//OK
-	void insertIn(int pos, nodeData^ data);//NOT TESTED
+	void insertIn(int pos, nodeData^ data);//OK
 	void erase(int pos);//NOT FINISHED
 	void edit(int pos);//NOT FINISHED
 	
@@ -86,6 +86,7 @@ public:
 private:
 	void clear();//OK
 	void increaseIndex();//NOT TESTED
+	void decreseIndex();
 	int toMilliSeconds(String^ time){return 0;}//NOT USED
 	String^ toTimeString(int milliSeconds){return "";}//NOT USED
 };

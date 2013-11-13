@@ -38,6 +38,7 @@ public:
 	void editSubtitle(M_SubDataClass^ data);
 	void editSubtitleText(M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
 	void insertSubtitles(M_SubDataClass^ data, int pos);
+	void eraseSubtitles(M_SubDataClass^ data, int pos);
 
 	OpenFileError checkFile(String^ path, int& encoding);
 };

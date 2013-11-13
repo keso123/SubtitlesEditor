@@ -29,5 +29,6 @@ public:
 	virtual void updateSubData(M_SubDataClass^ data)=0;
 	virtual void updataDataGrid(int row, M_SubDataClass::nodeData^ data)=0;
 	virtual void errorNotEnoughRoomSub()=0;
+	virtual void errorNotErase()=0;
 };
 

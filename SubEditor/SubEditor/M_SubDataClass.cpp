@@ -107,8 +107,32 @@ void M_SubDataClass::insertIn(int pos, nodeData^ data){
 
 void M_SubDataClass::erase(int pos){
 	moveTo(pos);
-	node^ prev = currentNode->prev;
-	node^ next = currentNode->next;
+	if(pos > 1){
+		node^ prev = currentNode->prev;
+		node^ next = currentNode->next;
+		node^ aux = currentNode;
+		prev->next = next;
+		next->prev = prev;
+		aux->next = nullptr;
+		aux->prev = nullptr;
+		currentNode = next;
+		delete aux;
+		aux = nullptr;
+		counter--;
+		decreseIndex();
+	}else if(pos == 1 && counter > 1){
+		node^ next = currentNode->next;
+		node^ aux = currentNode;
+		firstNode = next;
+		currentNode = next;
+		next->prev = nullptr;
+		aux->next = nullptr;
+		delete aux;
+		aux = nullptr;
+		counter--;
+		decreseIndex();
+	}else if(pos == counter){
+	}
 }
 
 void M_SubDataClass::edit(int pos){
@@ -135,6 +159,14 @@ void M_SubDataClass::increaseIndex(){
 	node^ n = currentNode;
 	while(n->next != nullptr){
 		n->next->data->ind += 1;
+		n = n->next;
+	}
+}
+void M_SubDataClass::decreseIndex(){
+	node^ n = currentNode;
+	currentNode->data->ind -= 1;
+	while(n->next != nullptr){
+		n->next->data->ind -= 1;
 		n = n->next;
 	}
 }

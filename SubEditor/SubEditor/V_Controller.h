@@ -41,5 +41,6 @@ public: ~V_Controller();
 		void editSubtitles(M_ObserverForm^ form, M_SubDataClass^ data);
 		void editSubtitlesText(M_ObserverForm^ form, M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
 		void insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
+		void eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
 };
 

@@ -45,3 +45,7 @@ void M_ObservableForm::notifyDataGrid(int row, M_SubDataClass::nodeData^ data){
 void M_ObservableForm::notifyNotEnoughRoomSub(){
 	observer->errorNotEnoughRoomSub();
 }
+
+void M_ObservableForm::notifyNotErase(){
+	observer->errorNotErase();
+}

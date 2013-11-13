@@ -146,6 +146,20 @@ void M_SubClass::insertSubtitles(M_SubDataClass^ data, int pos){
 		notifyDataGrid();
 	}
 }
+void M_SubClass::eraseSubtitles(M_SubDataClass^ data, int pos){
+	if(pos == data->size()){
+		if(DEBUG){
+			SubEditor::V_DebugForm^ debug = SubEditor::V_DebugForm::getDebugger();
+			debug->Show();
+			debug->insertLine("M_SubClass::eraseSubtitles");
+			debug->insertLine("El ultimo subtilo no se puede borrar");
+		}
+		notifyNotErase();
+		return;
+	}
+	data->erase(pos);
+	notifyDataGrid();
+}
 
 OpenFileError M_SubClass::checkFile(String^ path, int& encoding){
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();

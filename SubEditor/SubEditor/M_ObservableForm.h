@@ -33,5 +33,6 @@ public:
 	void notifyDataGrid();
 	void notifyDataGrid(int row, M_SubDataClass::nodeData^ data);
 	void notifyNotEnoughRoomSub();
+	void notifyNotErase();
 };
 

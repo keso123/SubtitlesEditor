@@ -168,6 +168,8 @@ namespace SubEditor {
 					debug->insertLine("Los tiempos del subtitulo no son validos");
 				}
 			}
+	public: virtual void errorNotErase(){
+			 }
 	//
 	// private methods
 	//
@@ -924,6 +926,8 @@ private: System::Void insertAfterToolStripMenuItem_Click(System::Object^  sender
 			 }
 		 }
 private: System::Void deleteToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 V_Controller^ c = V_Controller::getController();
+			 c->eraseSubtitles(this,subData,rowIndex + 1);
 		 }
 };
 }

@@ -94,3 +94,13 @@ void V_Controller::insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, i
 
 	delete subClass;
 }
+
+void V_Controller::eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos){
+	M_BFactory^ factory = M_BFactory::getBFactory();
+	M_SubClass^ subClass = factory->getSubClass();
+	subClass->addObserver(form);
+
+	subClass->eraseSubtitles(data,pos);
+
+	delete subClass;
+}
