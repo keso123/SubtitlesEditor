@@ -1,0 +1,36 @@
+  SubEditor.V_DebugForm.resources - Embedded, ContainedInManifestFile, 
+  SubEditor.V_MainForm.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly SubEditor, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+  Methods:
+    getDebugger(): PrivateScope, Public, Static, HideBySig
+    resetDebugger(): PrivateScope, Public, Static, HideBySig
+    setWindowLocation(Int32, Int32): PrivateScope, Public, HideBySig
+    setText(String): PrivateScope, Public, HideBySig
+    clearText(): PrivateScope, Public, HideBySig
+    insertLine(String): PrivateScope, Public, HideBySig
+Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    M_ObserverForm
+  Methods:
+    updateDataGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    updateSubData(M_SubDataClass): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    updataDataGrid(Int32, nodeData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    errorNotEnoughRoomSub(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
