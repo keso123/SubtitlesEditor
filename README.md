@@ -1,2 +1,3 @@
 SubtitlesEditor
 ===============
+Just for fun
