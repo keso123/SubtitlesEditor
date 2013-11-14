@@ -1,5 +1,6 @@
   SubEditor.V_DebugForm.resources - Embedded, ContainedInManifestFile, 
   SubEditor.V_MainForm.resources - Embedded, ContainedInManifestFile, 
+  SubEditor.V_TimeShiftForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly SubEditor, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
 	hash=SHA1, flags=PublicKey
@@ -24,6 +25,9 @@ Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     setText(String): PrivateScope, Public, HideBySig
     clearText(): PrivateScope, Public, HideBySig
     insertLine(String): PrivateScope, Public, HideBySig
+Class SubEditor.V_TimeShiftForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

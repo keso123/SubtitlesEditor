@@ -22,6 +22,7 @@
 #include "M_ObserverForm.h"
 #include "M_Properties.h"
 #include "V_DebugForm.h"
+#include "V_TimeShiftForm.h"
 
 namespace SubEditor {
 
@@ -86,9 +87,9 @@ namespace SubEditor {
 	private: System::Windows::Forms::TextBox^  textBoxTimeInterval;
 	private: System::Windows::Forms::Button^  buttonEnterSubtitles;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
-	private: System::Windows::Forms::ToolStripMenuItem^  subtitlesToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  advanceSubtitlesTimToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  delaySubtitlesToolStripMenuItem;
+
+
+
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStripGrid;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  insertBeforeToolStripMenuItem;
@@ -109,6 +110,11 @@ namespace SubEditor {
 	private: M_SubDataClass^ subData;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  subtitlesToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  shiftTimesTimToolStripMenuItem;
+
+
+
 	private: bool keyShift;
 	//
 	// Interface M_ObserverForm code
@@ -354,8 +360,7 @@ private: System::ComponentModel::IContainer^  components;
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->editToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->subtitlesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->advanceSubtitlesTimToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->delaySubtitlesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->shiftTimesTimToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
@@ -461,23 +466,17 @@ private: System::ComponentModel::IContainer^  components;
 			// 
 			// subtitlesToolStripMenuItem
 			// 
-			this->subtitlesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {this->advanceSubtitlesTimToolStripMenuItem, 
-				this->delaySubtitlesToolStripMenuItem});
+			this->subtitlesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) {this->shiftTimesTimToolStripMenuItem});
 			this->subtitlesToolStripMenuItem->Name = L"subtitlesToolStripMenuItem";
 			this->subtitlesToolStripMenuItem->Size = System::Drawing::Size(64, 20);
 			this->subtitlesToolStripMenuItem->Text = L"Subtitles";
 			// 
-			// advanceSubtitlesTimToolStripMenuItem
+			// shiftTimesTimToolStripMenuItem
 			// 
-			this->advanceSubtitlesTimToolStripMenuItem->Name = L"advanceSubtitlesTimToolStripMenuItem";
-			this->advanceSubtitlesTimToolStripMenuItem->Size = System::Drawing::Size(177, 22);
-			this->advanceSubtitlesTimToolStripMenuItem->Text = L"Advance Subtitles...";
-			// 
-			// delaySubtitlesToolStripMenuItem
-			// 
-			this->delaySubtitlesToolStripMenuItem->Name = L"delaySubtitlesToolStripMenuItem";
-			this->delaySubtitlesToolStripMenuItem->Size = System::Drawing::Size(177, 22);
-			this->delaySubtitlesToolStripMenuItem->Text = L"Delay Subtitles...";
+			this->shiftTimesTimToolStripMenuItem->Name = L"shiftTimesTimToolStripMenuItem";
+			this->shiftTimesTimToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->shiftTimesTimToolStripMenuItem->Text = L"Shift Times...";
+			this->shiftTimesTimToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::shiftTimesTimToolStripMenuItem_Click);
 			// 
 			// splitContainer1
 			// 
@@ -928,6 +927,10 @@ private: System::Void insertAfterToolStripMenuItem_Click(System::Object^  sender
 private: System::Void deleteToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 V_Controller^ c = V_Controller::getController();
 			 c->eraseSubtitles(this,subData,rowIndex + 1);
+		 }
+private: System::Void shiftTimesTimToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 V_TimeShiftForm^ timeForm = gcnew V_TimeShiftForm();
+			 timeForm->ShowDialog();
 		 }
 };
 }

@@ -89,6 +89,7 @@
     <ClCompile Include="V_Controller.cpp" />
     <ClCompile Include="V_DebugForm.cpp" />
     <ClCompile Include="V_MainForm.cpp" />
+    <ClCompile Include="V_TimeShiftForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="I_DAOFactory.h" />
@@ -107,6 +108,9 @@
     <ClInclude Include="V_MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="V_TimeShiftForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="V_DebugForm.resx">
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="V_MainForm.resx">
       <DependentUpon>V_MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="V_TimeShiftForm.resx">
+      <DependentUpon>V_TimeShiftForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
