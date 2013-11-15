@@ -232,12 +232,72 @@ void M_SubClass::shiftForwardBackward(M_SubDataClass^ data, int timesAffected, i
 }
 void M_SubClass::shiftBackwardAll(M_SubDataClass^ data, int timesAffected, String^ time){
 	data->moveStart();
+	M_SubDataClass::nodeData^ node;
+	int i = 1;
+	while(i <= data->size()){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		}
+		data->moveNext();
+		i++;
+	}
+	notifyDataGrid();
 }
 void M_SubClass::shiftBackwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
 	data->moveTo(pos);
+	M_SubDataClass::nodeData^ node;
+	int i = pos;
+	while(i <= data->size()){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		}
+		data->moveNext();
+		i++;
+	}
+	notifyDataGrid();
 }
 void M_SubClass::shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
 	data->moveTo(pos);
+	M_SubDataClass::nodeData^ node;
+	int i = pos;
+	while(i > 0){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->decraseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->decraseTime(node->sEnd,time);
+			break;
+		}
+		data->movePrev();
+		i--;
+	}
+	notifyDataGrid();
 }
 
 OpenFileError M_SubClass::checkFile(String^ path, int& encoding){

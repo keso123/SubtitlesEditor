@@ -19,6 +19,7 @@
 #pragma once
 
 #include "M_BFactory.h"
+#include "V_DebugForm.h"
 //#include "V_MainForm.h"
 
 //using namespace SubEditor;

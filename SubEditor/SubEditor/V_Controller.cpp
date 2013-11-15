@@ -124,6 +124,11 @@ void V_Controller::shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int shi
 			}
 		}
 	}else{//ShiftTimes::frameMode
+		if(DEBUG){
+			SubEditor::V_DebugForm^ debug = SubEditor::V_DebugForm::getDebugger();
+			debug->Show();
+			debug->insertLine("Frames not working yet");
+		}
 	}
 	delete subClass;
 }
