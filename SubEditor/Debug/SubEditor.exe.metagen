@@ -28,6 +28,8 @@ Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
 Class SubEditor.V_TimeShiftForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    setObserver(M_ObserverForm): PrivateScope, Public, HideBySig
 Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -35,6 +37,7 @@ Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     M_ObserverForm
   Methods:
     updateDataGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    updateSubData(Int32, Int32, Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     updateSubData(M_SubDataClass): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     updataDataGrid(Int32, nodeData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     errorNotEnoughRoomSub(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask

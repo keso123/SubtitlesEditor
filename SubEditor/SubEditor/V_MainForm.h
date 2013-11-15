@@ -176,6 +176,16 @@ namespace SubEditor {
 			}
 	public: virtual void errorNotErase(){
 			 }
+	public: virtual void updateSubData(int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time){
+				if(DEBUG){
+					debug = V_DebugForm::getDebugger();
+					debug->Show();
+					debug->insertLine("updateSubData");
+				}
+				if(shiftMode == ShiftTimes::timeMode){
+				}else{
+				}
+			}
 	//
 	// private methods
 	//
@@ -930,6 +940,7 @@ private: System::Void deleteToolStripMenuItem_Click(System::Object^  sender, Sys
 		 }
 private: System::Void shiftTimesTimToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 V_TimeShiftForm^ timeForm = gcnew V_TimeShiftForm();
+			 timeForm->setObserver(this);
 			 timeForm->ShowDialog();
 		 }
 };

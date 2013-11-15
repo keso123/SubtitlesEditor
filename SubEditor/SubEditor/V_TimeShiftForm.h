@@ -18,6 +18,9 @@
  */
 #pragma once
 
+#include "M_ObserverForm.h"
+#include "SharedTypes.h"
+
 namespace SubEditor {
 
 	using namespace System;
@@ -66,6 +69,7 @@ namespace SubEditor {
 	private: bool end;
 	private: String^ timeText;
 	private: String^ frameText;
+	private: M_ObserverForm^ observer;
 			 // Methods
 	private: void initGUI(){
 				 time = true;
@@ -92,6 +96,9 @@ namespace SubEditor {
 				 this->checkBoxEnd->Checked = end;
 				 this->textBoxTime->Text = timeText;
 				 this->textBoxFrame->Text = frameText;
+			 }
+	public: void setObserver(M_ObserverForm^ ob){
+				 observer = ob;
 			 }
 			 // End Methods
 	private: System::Windows::Forms::GroupBox^  groupBox1;
@@ -186,6 +193,7 @@ namespace SubEditor {
 			this->textBoxTime->Name = L"textBoxTime";
 			this->textBoxTime->Size = System::Drawing::Size(100, 20);
 			this->textBoxTime->TabIndex = 4;
+			this->textBoxTime->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &V_TimeShiftForm::textBoxTime_KeyPress);
 			// 
 			// checkBoxBackward
 			// 
@@ -323,7 +331,7 @@ namespace SubEditor {
 			// 
 			// buttonOK
 			// 
-			this->buttonOK->Location = System::Drawing::Point(36, 303);
+			this->buttonOK->Location = System::Drawing::Point(59, 303);
 			this->buttonOK->Name = L"buttonOK";
 			this->buttonOK->Size = System::Drawing::Size(75, 23);
 			this->buttonOK->TabIndex = 3;
@@ -333,7 +341,7 @@ namespace SubEditor {
 			// 
 			// buttonCancel
 			// 
-			this->buttonCancel->Location = System::Drawing::Point(117, 303);
+			this->buttonCancel->Location = System::Drawing::Point(140, 303);
 			this->buttonCancel->Name = L"buttonCancel";
 			this->buttonCancel->Size = System::Drawing::Size(75, 23);
 			this->buttonCancel->TabIndex = 4;
@@ -442,8 +450,66 @@ private: System::Void checkBoxEnd_MouseUp(System::Object^  sender, System::Windo
 			 this->checkBoxStartEnd->Checked = startEnd;
 		 }
 private: System::Void buttonOK_Click(System::Object^  sender, System::EventArgs^  e) {
+			 int shiftMode = ShiftTimes::timeMode;
+			 if(!time) shiftMode = ShiftTimes::frameMode;
+			 int mode = ShiftTimes::forward;
+			 if(!forward) mode = ShiftTimes::backward;
+			 int rows = ShiftTimes::allrows;
+			 if(selectionF) rows = ShiftTimes::selectionF;
+			 else if(selectionB) rows = ShiftTimes::selectionB;
+			 int times = ShiftTimes::timeStartEnd;
+			 if(start) times = ShiftTimes::timeStart;
+			 else if(end) times = ShiftTimes::timeEnd;
+			 observer->updateSubData(shiftMode,mode,rows,times,timeText);
+			 this->Close();
 		 }
 private: System::Void buttonCancel_Click(System::Object^  sender, System::EventArgs^  e) {
+			 this->Close();
+		 }
+private: System::Void textBoxTime_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e) {
+			 if(e->KeyChar >= 48 && e->KeyChar <= 57){
+					 //00:00:00,000
+					 int pos = this->textBoxTime->SelectionStart;
+					 if(pos == 2 || pos == 5 || pos == 8){
+						 pos = pos + 1;
+					 }else if(pos == this->textBoxTime->Text->Length){
+						pos = pos - 1;
+					 }
+					 String^ text1 = this->textBoxTime->Text->Substring(0,pos);
+					 String^ text2 = this->textBoxTime->Text->Substring(pos+1);
+					 int n = e->KeyChar - 48;
+					 String^ number = n.ToString();
+					 this->textBoxTime->Text = text1 + number + text2;
+					 this->textBoxTime->SelectionStart = pos +1;
+					 this->textBoxTime->SelectionLength = 0;
+					 timeText = this->textBoxTime->Text;
+					 e->Handled = true;
+					return;
+				}
+				if(e->KeyChar == 8){
+					int pos = this->textBoxTime->SelectionStart;
+					if(pos == 3 || pos == 6 || pos == 9){
+						this->textBoxTime->SelectionStart = pos - 1;
+						this->textBoxTime->SelectionLength = 0;
+						timeText = this->textBoxTime->Text;
+						e->Handled = true;
+						return;
+					}else if(pos == 0){
+						e->Handled = true;
+						return;
+					}
+					String^ text1 = this->textBoxTime->Text->Substring(0,pos - 1);
+					String^ text2 = this->textBoxTime->Text->Substring(pos);
+					int n = 0;
+					String^ number = n.ToString();
+					this->textBoxTime->Text = text1 + number + text2;
+					this->textBoxTime->SelectionStart = pos - 1;
+					this->textBoxTime->SelectionLength = 0;
+					timeText = this->textBoxTime->Text;
+					e->Handled = true;
+					return;
+				}
+				e->Handled = true;
 		 }
 };
 }

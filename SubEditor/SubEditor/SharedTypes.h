@@ -51,6 +51,18 @@ enum TextFileEncoding {
 	GB18030 = 10,
 	NoBOMencoding = 11
 };
+enum ShiftTimes {
+	timeMode = 0,
+	frameMode = 1,
+	forward = 2,
+	backward = 3,
+	allrows = 4,
+	selectionF = 5,
+	selectionB = 6,
+	timeStartEnd = 7,
+	timeStart = 8,
+	timeEnd = 9
+};
 enum Properties {
 	E_PROYECT_NAME = 0,
 	E_MENU_STRIP_FILE_HEADER = 1,

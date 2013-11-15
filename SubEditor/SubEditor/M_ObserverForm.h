@@ -30,5 +30,7 @@ public:
 	virtual void updataDataGrid(int row, M_SubDataClass::nodeData^ data)=0;
 	virtual void errorNotEnoughRoomSub()=0;
 	virtual void errorNotErase()=0;
+	//between guis
+	virtual void updateSubData(int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time)=0;
 };
 
