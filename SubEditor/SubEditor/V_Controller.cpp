@@ -104,3 +104,26 @@ void V_Controller::eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, in
 
 	delete subClass;
 }
+void V_Controller::shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow){
+	M_BFactory^ factory = M_BFactory::getBFactory();
+	M_SubClass^ subClass = factory->getSubClass();
+	subClass->addObserver(form);
+
+	if(shiftMode == ShiftTimes::timeMode){
+		if(mode == ShiftTimes::forward){
+			switch(rowsAffected){
+			case ShiftTimes::allrows: subClass->shiftForwardAll(data,timesAffected,time); break;
+			case ShiftTimes::selectionF: subClass->shiftForwardForward(data,timesAffected,selectedRow,time);break;
+			case ShiftTimes::selectionB: subClass->shiftForwardBackward(data,timesAffected,selectedRow,time);break;
+			}
+		}else{//ShiftTimes::backward
+			switch(rowsAffected){
+			case ShiftTimes::allrows: subClass->shiftBackwardAll(data,timesAffected,time); break;
+			case ShiftTimes::selectionF: subClass->shiftBackwardForward(data,timesAffected,selectedRow,time); break;
+			case ShiftTimes::selectionB: subClass->shiftBackwardBackward(data,timesAffected,selectedRow,time); break;
+			}
+		}
+	}else{//ShiftTimes::frameMode
+	}
+	delete subClass;
+}

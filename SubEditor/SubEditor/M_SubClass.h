@@ -40,6 +40,13 @@ public:
 	void insertSubtitles(M_SubDataClass^ data, int pos);
 	void eraseSubtitles(M_SubDataClass^ data, int pos);
 
+	void shiftForwardAll(M_SubDataClass^ data, int timesAffected, String^ time);
+	void shiftForwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
+	void shiftForwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
+	void shiftBackwardAll(M_SubDataClass^ data, int timesAffected, String^ time);
+	void shiftBackwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
+	void shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
+
 	OpenFileError checkFile(String^ path, int& encoding);
 };
 

@@ -182,9 +182,8 @@ namespace SubEditor {
 					debug->Show();
 					debug->insertLine("updateSubData");
 				}
-				if(shiftMode == ShiftTimes::timeMode){
-				}else{
-				}
+				V_Controller^ c = V_Controller::getController();
+				c->shiftTime(this,subData,shiftMode,mode,rowsAffected,timesAffected,time,rowIndex);
 			}
 	//
 	// private methods

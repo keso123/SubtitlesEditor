@@ -161,6 +161,85 @@ void M_SubClass::eraseSubtitles(M_SubDataClass^ data, int pos){
 	notifyDataGrid();
 }
 
+void M_SubClass::shiftForwardAll(M_SubDataClass^ data, int timesAffected, String^ time){
+	M_SubDataClass::nodeData^ node;
+	data->moveEnd();
+	int i = data->size();
+	while(i > 0){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		}
+		data->movePrev();
+		i--;
+	}
+	notifyDataGrid();
+}
+void M_SubClass::shiftForwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+	data->moveEnd();
+	M_SubDataClass::nodeData^ node;
+	int i = data->size();
+	while(i >= pos){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		}
+		data->movePrev();
+		i--;
+	}
+	notifyDataGrid();
+}
+void M_SubClass::shiftForwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+	data->moveTo(pos);
+	M_SubDataClass::nodeData^ node;
+	int i = pos;
+	while(i > 0){
+		node = data->getCurrent();
+		switch(timesAffected){
+		case ShiftTimes::timeStartEnd: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		case ShiftTimes::timeStart: 
+			node->sStart = data->increaseTime(node->sStart,time);
+			break;
+		case ShiftTimes::timeEnd: 
+			node->sEnd = data->increaseTime(node->sEnd,time);
+			break;
+		}
+		data->movePrev();
+		i--;
+	}
+	notifyDataGrid();
+}
+void M_SubClass::shiftBackwardAll(M_SubDataClass^ data, int timesAffected, String^ time){
+	data->moveStart();
+}
+void M_SubClass::shiftBackwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+	data->moveTo(pos);
+}
+void M_SubClass::shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+	data->moveTo(pos);
+}
+
 OpenFileError M_SubClass::checkFile(String^ path, int& encoding){
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
 	I_DAOSub^ dao = fac->getDAOSub();

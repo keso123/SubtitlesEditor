@@ -1,37 +1,9 @@
-﻿Compilación iniciada a las 15/11/2013 14:47:41.
+﻿Compilación iniciada a las 15/11/2013 18:18:06.
      1>Proyecto "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" en el nodo 2 (Build destinos).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib V_MainForm.cpp
-         V_MainForm.cpp
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_TimeShiftForm.h(100): warning C4677: 'setObserver': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_ObserverForm'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_ObserverForm.h(24) : vea la declaración de 'M_ObserverForm'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(153): warning C4677: 'updateSubData': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(24) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(160): warning C4677: 'updataDataGrid': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass::nodeData'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(25) : vea la declaración de 'M_SubDataClass::nodeData'
-                 'M_SubDataClass::nodeData': accesibilidad del ensamblado invalidada como 'private' por el tipo envolvente 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(24) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(160): warning C4677: 'updataDataGrid': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(24) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(124): warning C4101: 'rows' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(837): warning C4101: 'e' : variable local sin referencia
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\SubEditor.V_DebugForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_MainForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_TimeShiftForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\I_DAOFactory.obj
-         Debug\I_DAOSub.obj
-         Debug\M_BFactory.obj
-         Debug\M_ObservableForm.obj
-         Debug\M_ObserverForm.obj
-         Debug\M_Properties.obj
-         Debug\M_SubClass.obj
-         Debug\M_SubDataClass.obj
-         Debug\V_Controller.obj
-         Debug\V_DebugForm.obj
-         Debug\V_MainForm.obj
-         Debug\V_TimeShiftForm.obj
-         "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+     1>Link:
          SubEditor.vcxproj -> C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe
      1>Compilación del proyecto terminada "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:03.26
+Tiempo transcurrido 00:00:00.41

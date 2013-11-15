@@ -42,6 +42,6 @@ public: ~V_Controller();
 		void editSubtitlesText(M_ObserverForm^ form, M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
 		void insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
 		void eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
-		void shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int mode, int pos, String^ time){}
+		void shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow);
 };
 
