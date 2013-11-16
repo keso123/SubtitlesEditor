@@ -176,6 +176,20 @@ namespace SubEditor {
 				V_Controller^ c = V_Controller::getController();
 				c->shiftTime(this,subData,shiftMode,mode,rowsAffected,timesAffected,time,rowIndex);
 			}
+	public: virtual void saveOK(){
+				if(DEBUG){
+					debug = V_DebugForm::getDebugger();
+					debug->Show();
+					debug->insertLine("Guardado con exito");
+				}
+			}
+	public: virtual void saveError(){
+				if(DEBUG){
+					debug = V_DebugForm::getDebugger();
+					debug->Show();
+					debug->insertLine("Error al guardar");
+				}
+			}
 	//
 	// private methods
 	//
@@ -831,7 +845,7 @@ private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  send
 						else
 							file = gcnew System::IO::StreamReader(path);
 						
-						c->openSubtitles(this,file);
+						c->openSubtitles(this,file,encoding,path);
 						file->Close();
 					}catch(Exception^ e){
 						MessageBox::Show("Error al abrir");
@@ -947,6 +961,44 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 				 V_Controller^ c = V_Controller::getController();
 
 				 String^ path = saveFileDialog1->FileName;
+				 try{
+					 System::IO::StreamWriter^ file;
+					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
+						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+					 else{
+						 switch (subData->getEncoding())
+						 {
+						 case TextFileEncoding::UTF8:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+							 break;
+						 case TextFileEncoding::UTF16B:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::BigEndianUnicode);
+							 break;
+						 case TextFileEncoding::UTF16L:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::Unicode);
+							 break;
+						 case TextFileEncoding::UTF32B:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF32);
+							 break;
+						 case TextFileEncoding::UTF7:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+							 break;
+						 default:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+							 break;
+						 }
+					 }
+					 c->saveSubtitles(this,file,subData);
+					 file->Close();
+				 }catch(Exception^ e){
+					 if(DEBUG){
+						debug = SubEditor::V_DebugForm::getDebugger();
+						debug->Show();
+						debug->insertLine("M_SubClass::saveSubtitles");
+						debug->insertLine("Error al guardar el archivo");
+					}
+				 }finally{
+				 }
 			 }
 		 }
 };

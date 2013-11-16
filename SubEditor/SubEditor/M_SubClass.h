@@ -34,7 +34,8 @@ public:
 	virtual ~M_SubClass();
 
 	void newSubtitles();
-	void openSubtitles(System::IO::StreamReader^ file);
+	void openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path);
+	void saveSubtitles(System::IO::StreamWriter^ file,M_SubDataClass^ data);
 	void editSubtitle(M_SubDataClass^ data);
 	void editSubtitleText(M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
 	void insertSubtitles(M_SubDataClass^ data, int pos);

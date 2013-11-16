@@ -43,6 +43,12 @@ int M_SubDataClass::getEncoding(){
 String^ M_SubDataClass::getPath(){
 	return path;
 }
+void M_SubDataClass::setEncoding(int enc){
+	encoding = enc;
+}
+void M_SubDataClass::setPath(String^ path){
+	this->path = path;
+}
 void M_SubDataClass::insert(nodeData^ data){
 	moveEnd();
 	if(currentNode != nullptr){

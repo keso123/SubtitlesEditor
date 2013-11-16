@@ -32,5 +32,7 @@ public:
 	virtual void errorNotErase()=0;
 	//between guis
 	virtual void updateSubData(int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time)=0;
+	virtual void saveOK()=0;
+	virtual void saveError()=0;
 };
 

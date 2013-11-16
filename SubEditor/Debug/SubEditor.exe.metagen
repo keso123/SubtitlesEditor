@@ -42,3 +42,5 @@ Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     updataDataGrid(Int32, nodeData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     errorNotEnoughRoomSub(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     errorNotErase(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    saveOK(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    saveError(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask

@@ -78,6 +78,9 @@ bool I_DAOSub::loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub
 	}
 	return true;
 }
+bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub){
+	return true;
+}
 
 OpenFileError I_DAOSub::checkFile(String^ path, int& encoding){
 	/*

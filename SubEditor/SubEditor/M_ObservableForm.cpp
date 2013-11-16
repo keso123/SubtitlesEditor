@@ -49,3 +49,10 @@ void M_ObservableForm::notifyNotEnoughRoomSub(){
 void M_ObservableForm::notifyNotErase(){
 	observer->errorNotErase();
 }
+
+void M_ObservableForm::notifySaveOK(){
+	observer->saveOK();
+}
+void M_ObservableForm::notifySaveError(){
+	observer->saveError();
+}

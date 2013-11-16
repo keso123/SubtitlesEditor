@@ -40,7 +40,7 @@ void M_SubClass::newSubtitles(){
 	notifyDataGrid();
 }
 
-void M_SubClass::openSubtitles(System::IO::StreamReader^ file){
+void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path){
 	M_SubDataClass^ sub = gcnew M_SubDataClass();
 
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
@@ -48,7 +48,6 @@ void M_SubClass::openSubtitles(System::IO::StreamReader^ file){
 
 	if(dao->loadSubtitles(file,sub)){
 		delete dao;
-
 		M_SubDataClass::nodeData^ last = sub->getLast();
 		M_SubDataClass::nodeData^ node = gcnew M_SubDataClass::nodeData;
 		node->ind = last->ind + 1;
@@ -56,11 +55,25 @@ void M_SubClass::openSubtitles(System::IO::StreamReader^ file){
 		node->sEnd = sub->increaseTime(node->sStart, "00:00:01,000");
 		node->text = "";
 		sub->insert(node);
+		sub->setEncoding(encoding);
+		sub->setPath(path);
 		notifySubData(sub);
 		notifyDataGrid();
 	}else{
 		delete dao;
 	}
+}
+void M_SubClass::saveSubtitles(System::IO::StreamWriter^ file,M_SubDataClass^ data){
+	M_SubDataClass^ sub = gcnew M_SubDataClass();
+
+	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
+	I_DAOSub^ dao = fac->getDAOSub();
+	if(dao->saveSubtitles(file,data)){
+		notifySaveOK();
+	}else{
+		notifySaveError();
+	}
+	delete dao;
 }
 
 void M_SubClass::editSubtitle(M_SubDataClass^ data){

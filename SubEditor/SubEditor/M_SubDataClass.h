@@ -51,6 +51,8 @@ public:
 	bool empty();
 	int getEncoding();
 	String^ getPath();
+	void setEncoding(int enc);
+	void setPath(String^ path);
 	void insert(nodeData^ data);//OK
 	void insertIn(int pos, nodeData^ data);//OK
 	void erase(int pos);//NOT FINISHED

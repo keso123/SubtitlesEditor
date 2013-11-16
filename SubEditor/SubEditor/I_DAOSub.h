@@ -36,6 +36,7 @@ public:
 	virtual ~I_DAOSub(void);
 
 	bool loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub);
+	bool saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub);
 	OpenFileError checkFile(String^ path, int& encoding);
 };
 
