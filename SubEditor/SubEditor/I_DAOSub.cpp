@@ -79,6 +79,20 @@ bool I_DAOSub::loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub
 	return true;
 }
 bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub){
+	int i = 1;
+	sub->moveStart();
+	String^ aux = "";
+	while(i < sub->size()){
+		aux = sub->getCurrent()->ind.ToString();
+		file->WriteLine(aux);
+		aux = sub->getCurrent()->sStart+" --> "+sub->getCurrent()->sEnd;
+		file->WriteLine(aux);
+		aux = sub->getCurrent()->text;
+		file->WriteLine(aux);
+		file->WriteLine();
+		sub->moveNext();
+		i++;
+	}
 	return true;
 }
 
