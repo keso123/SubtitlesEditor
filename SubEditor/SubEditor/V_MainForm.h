@@ -95,16 +95,6 @@ namespace SubEditor {
 	private: System::Windows::Forms::ToolStripMenuItem^  insertBeforeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  insertAfterToolStripMenuItem;
 
-
-
-
-
-
-
-
-
-
-
 	private: V_DebugForm^ debug;
 	private: int rowIndex;
 	private: M_SubDataClass^ subData;
@@ -112,6 +102,7 @@ namespace SubEditor {
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  subtitlesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  shiftTimesTimToolStripMenuItem;
+	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
 
 
 
@@ -205,6 +196,13 @@ namespace SubEditor {
 				 }*/
 				 V_Controller^ c = V_Controller::getController();
 				 c->editSubtitlesText(this,subData,rowIndex + 1,start,end,text);
+				 this->dataGridView1->Rows[rowIndex]->Selected = false;
+				 rowIndex++;
+				 this->dataGridView1->Rows[rowIndex]->Selected = true;
+				 this->textBoxSubtitlesText->Text = subData->get(rowIndex + 1)->text;
+				 this->textBoxStartTime->Text = subData->get(rowIndex + 1)->sStart;
+				 this->textBoxEndTime->Text = subData->get(rowIndex + 1)->sEnd;
+				 this->textBoxTimeInterval->Text = subData->decraseTime(this->textBoxEndTime->Text,this->textBoxStartTime->Text);
 			 }
 	private: void insertSubtitle(int pos){
 				 V_Controller^ c = V_Controller::getController();
@@ -396,6 +394,7 @@ private: System::ComponentModel::IContainer^  components;
 			this->insertAfterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
@@ -460,6 +459,7 @@ private: System::ComponentModel::IContainer^  components;
 			this->saveSubtitlesAsToolStripMenuItem->Name = L"saveSubtitlesAsToolStripMenuItem";
 			this->saveSubtitlesAsToolStripMenuItem->Size = System::Drawing::Size(169, 22);
 			this->saveSubtitlesAsToolStripMenuItem->Text = L"Save Subtitles as...";
+			this->saveSubtitlesAsToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::saveSubtitlesAsToolStripMenuItem_Click);
 			// 
 			// exitToolStripMenuItem
 			// 
@@ -483,7 +483,7 @@ private: System::ComponentModel::IContainer^  components;
 			// shiftTimesTimToolStripMenuItem
 			// 
 			this->shiftTimesTimToolStripMenuItem->Name = L"shiftTimesTimToolStripMenuItem";
-			this->shiftTimesTimToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->shiftTimesTimToolStripMenuItem->Size = System::Drawing::Size(142, 22);
 			this->shiftTimesTimToolStripMenuItem->Text = L"Shift Times...";
 			this->shiftTimesTimToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::shiftTimesTimToolStripMenuItem_Click);
 			// 
@@ -941,6 +941,13 @@ private: System::Void shiftTimesTimToolStripMenuItem_Click(System::Object^  send
 			 V_TimeShiftForm^ timeForm = gcnew V_TimeShiftForm();
 			 timeForm->setObserver(this);
 			 timeForm->ShowDialog();
+		 }
+private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 if(this->saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
+				 V_Controller^ c = V_Controller::getController();
+
+				 String^ path = saveFileDialog1->FileName;
+			 }
 		 }
 };
 }

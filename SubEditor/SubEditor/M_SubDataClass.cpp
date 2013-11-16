@@ -37,6 +37,12 @@ int M_SubDataClass::size(){
 bool M_SubDataClass::empty(){
 	return counter == 0;
 }
+int M_SubDataClass::getEncoding(){
+	return encoding;
+}
+String^ M_SubDataClass::getPath(){
+	return path;
+}
 void M_SubDataClass::insert(nodeData^ data){
 	moveEnd();
 	if(currentNode != nullptr){

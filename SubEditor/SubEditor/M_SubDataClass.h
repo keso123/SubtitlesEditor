@@ -40,6 +40,8 @@ private:
 	node^ currentNode;
 	node^ firstNode;
 	node^ lastNode;
+	String^ path;
+	int encoding;
 
 public:
 	M_SubDataClass(void);
@@ -47,6 +49,8 @@ public:
 
 	int size();
 	bool empty();
+	int getEncoding();
+	String^ getPath();
 	void insert(nodeData^ data);//OK
 	void insertIn(int pos, nodeData^ data);//OK
 	void erase(int pos);//NOT FINISHED
