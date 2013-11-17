@@ -103,6 +103,9 @@ namespace SubEditor {
 	private: System::Windows::Forms::ToolStripMenuItem^  subtitlesToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  shiftTimesTimToolStripMenuItem;
 	private: System::Windows::Forms::SaveFileDialog^  saveFileDialog1;
+	private: System::Windows::Forms::ToolStripMenuItem^  videoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  audioToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  helpToolStripMenuItem;
 
 
 
@@ -409,6 +412,9 @@ private: System::ComponentModel::IContainer^  components;
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->videoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->audioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
@@ -432,8 +438,8 @@ private: System::ComponentModel::IContainer^  components;
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->fileToolStripMenuItem, 
-				this->editToolStripMenuItem, this->subtitlesToolStripMenuItem});
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {this->fileToolStripMenuItem, 
+				this->editToolStripMenuItem, this->subtitlesToolStripMenuItem, this->videoToolStripMenuItem, this->audioToolStripMenuItem, this->helpToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(962, 24);
@@ -783,6 +789,24 @@ private: System::ComponentModel::IContainer^  components;
 			this->deleteToolStripMenuItem->Size = System::Drawing::Size(148, 22);
 			this->deleteToolStripMenuItem->Text = L"Delete";
 			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::deleteToolStripMenuItem_Click);
+			// 
+			// videoToolStripMenuItem
+			// 
+			this->videoToolStripMenuItem->Name = L"videoToolStripMenuItem";
+			this->videoToolStripMenuItem->Size = System::Drawing::Size(49, 20);
+			this->videoToolStripMenuItem->Text = L"Video";
+			// 
+			// audioToolStripMenuItem
+			// 
+			this->audioToolStripMenuItem->Name = L"audioToolStripMenuItem";
+			this->audioToolStripMenuItem->Size = System::Drawing::Size(51, 20);
+			this->audioToolStripMenuItem->Text = L"Audio";
+			// 
+			// helpToolStripMenuItem
+			// 
+			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
+			this->helpToolStripMenuItem->Text = L"Help";
 			// 
 			// V_MainForm
 			// 
