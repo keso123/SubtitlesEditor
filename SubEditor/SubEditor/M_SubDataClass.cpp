@@ -25,6 +25,7 @@ M_SubDataClass::M_SubDataClass(void)
 	this->currentNode = nullptr;
 	this->firstNode = nullptr;
 	this->lastNode = nullptr;
+	this->path = nullptr;
 }
 
 M_SubDataClass::~M_SubDataClass(){

@@ -45,6 +45,7 @@ namespace SubEditor {
 			subData = nullptr;
 			keyShift = false;
 			rowIndex = 0;
+			isSave = false;
 			InitializeComponent();
 
 			initGUIProperties();
@@ -95,9 +96,6 @@ namespace SubEditor {
 	private: System::Windows::Forms::ToolStripMenuItem^  insertBeforeToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  insertAfterToolStripMenuItem;
 
-	private: V_DebugForm^ debug;
-	private: int rowIndex;
-	private: M_SubDataClass^ subData;
 	private: System::Windows::Forms::ToolStripSeparator^  toolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  deleteToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  subtitlesToolStripMenuItem;
@@ -110,6 +108,10 @@ namespace SubEditor {
 
 
 	private: bool keyShift;
+	private: V_DebugForm^ debug;
+	private: int rowIndex;
+	private: M_SubDataClass^ subData;
+	private: bool isSave;
 	//
 	// Interface M_ObserverForm code
 	//
@@ -169,6 +171,11 @@ namespace SubEditor {
 				}
 			}
 	public: virtual void errorNotErase(){
+				if(DEBUG){
+					debug = V_DebugForm::getDebugger();
+					debug->Show();
+					debug->insertLine("No se ha borrado el subtitulo");
+				}
 			 }
 	public: virtual void updateSubData(int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time){
 				if(DEBUG){
@@ -266,6 +273,10 @@ namespace SubEditor {
 					return;
 				}
 				e->Handled = true;
+			 }
+	private: System::Windows::Forms::DialogResult askSaveSubtitles(){
+				 System::Windows::Forms::DialogResult result = MessageBox::Show("Do you want to save changes to Untitled?","Unsaved changes",MessageBoxButtons::YesNoCancel,MessageBoxIcon::Question);
+				 return result;
 			 }
 	private: void setUpDataGrid(){
 				 /*DataGridViewCellStyle^ style = dataGridView1->ColumnHeadersDefaultCellStyle;
@@ -852,7 +863,16 @@ private: System::ComponentModel::IContainer^  components;
 	private: System::Void newSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 rowIndex = 0;
 				 V_Controller^ c = V_Controller::getController();
-				 c->newSubtitles(this);
+				 if(!isSave && subData->size() > 1){
+					 System::Windows::Forms::DialogResult result = askSaveSubtitles();
+					 if(result == System::Windows::Forms::DialogResult::Yes){
+						 c->newSubtitles(this);
+					 }else if(result == System::Windows::Forms::DialogResult::No){
+						 c->newSubtitles(this);
+					 }else{
+						 return;
+					 }
+				 }
 			 }
 private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 if(openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
