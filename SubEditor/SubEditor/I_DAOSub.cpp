@@ -96,7 +96,7 @@ bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub
 	return true;
 }
 
-OpenFileError I_DAOSub::checkFile(String^ path, int& encoding){
+OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name){
 	/*
 	bool result = true;
 	int ind = 0;
@@ -116,7 +116,6 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding){
 	*/
 	try{
 		System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
-		
 		//check extension
 		if(String::Compare(info->Extension,".srt") == 0){
 			
@@ -158,12 +157,12 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding){
 					encoding = TextFileEncoding::GB18030;
 			}
 			fs->Close();
-
+			name = info->Name;
 			return OpenFileError::OpenFileErrorOK;
 		}else{
 			return OpenFileError::fileExtensionError;
 		}
-
+		
 	}catch(System::Security::SecurityException^ e){
 		return OpenFileError::permissionsError;
 	}catch(System::ArgumentException^ e){

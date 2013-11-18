@@ -40,7 +40,7 @@ void M_SubClass::newSubtitles(){
 	notifyDataGrid();
 }
 
-void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path){
+void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name){
 	M_SubDataClass^ sub = gcnew M_SubDataClass();
 
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
@@ -57,6 +57,7 @@ void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, Str
 		sub->insert(node);
 		sub->setEncoding(encoding);
 		sub->setPath(path);
+		sub->setName(name);
 		notifySubData(sub);
 		notifyDataGrid();
 	}else{
@@ -313,11 +314,11 @@ void M_SubClass::shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, 
 	notifyDataGrid();
 }
 
-OpenFileError M_SubClass::checkFile(String^ path, int& encoding){
+OpenFileError M_SubClass::checkFile(String^ path, int& encoding, String^& name){
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
 	I_DAOSub^ dao = fac->getDAOSub();
 	
-	OpenFileError result = dao->checkFile(path,encoding);
+	OpenFileError result = dao->checkFile(path,encoding,name);
 	delete dao;
 	return result;
 }

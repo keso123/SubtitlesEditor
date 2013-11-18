@@ -42,6 +42,7 @@ private:
 	node^ lastNode;
 	String^ path;
 	int encoding;
+	String^ name;
 
 public:
 	M_SubDataClass(void);
@@ -51,8 +52,10 @@ public:
 	bool empty();
 	int getEncoding();
 	String^ getPath();
+	String^ getName();
 	void setEncoding(int enc);
 	void setPath(String^ path);
+	void setName(String^ name);
 	void insert(nodeData^ data);//OK
 	void insertIn(int pos, nodeData^ data);//OK
 	void erase(int pos);//NOT FINISHED

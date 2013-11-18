@@ -275,7 +275,8 @@ namespace SubEditor {
 				e->Handled = true;
 			 }
 	private: System::Windows::Forms::DialogResult askSaveSubtitles(){
-				 System::Windows::Forms::DialogResult result = MessageBox::Show("Do you want to save changes to Untitled?","Unsaved changes",MessageBoxButtons::YesNoCancel,MessageBoxIcon::Question);
+				 String^ name = subData->getName();
+				 System::Windows::Forms::DialogResult result = MessageBox::Show("Do you want to save changes to "+name+"?","Unsaved changes",MessageBoxButtons::YesNoCancel,MessageBoxIcon::Question);
 				 return result;
 			 }
 	private: void setUpDataGrid(){
@@ -881,7 +882,8 @@ private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  send
 				String^ path = openFileDialog1->FileName;
 
 				int encoding = TextFileEncoding::NoBOMencoding;
-				if(c->checkFile(this,path,encoding) == OpenFileError::OpenFileErrorOK){
+				String^ name = "Untitled";
+				if(c->checkFile(this,path,encoding,name) == OpenFileError::OpenFileErrorOK){
 					try{
 						System::IO::StreamReader^ file;
 						if(encoding == TextFileEncoding::NoBOMencoding)
@@ -889,7 +891,7 @@ private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  send
 						else
 							file = gcnew System::IO::StreamReader(path);
 						
-						c->openSubtitles(this,file,encoding,path);
+						c->openSubtitles(this,file,encoding,path,name);
 						file->Close();
 					}catch(Exception^ e){
 						MessageBox::Show("Error al abrir");
