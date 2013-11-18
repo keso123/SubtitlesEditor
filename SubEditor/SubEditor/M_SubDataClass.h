@@ -18,6 +18,8 @@
  */
 #pragma once
 
+#include "SharedTypes.h"
+
 using namespace System;
 
 ref class M_SubDataClass

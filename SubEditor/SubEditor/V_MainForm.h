@@ -227,6 +227,7 @@ namespace SubEditor {
 				 this->textBoxStartTime->Text = subData->get(rowIndex + 1)->sStart;
 				 this->textBoxEndTime->Text = subData->get(rowIndex + 1)->sEnd;
 				 this->textBoxTimeInterval->Text = subData->decraseTime(this->textBoxEndTime->Text,this->textBoxStartTime->Text);
+				 isSave = false;
 			 }
 	private: void insertSubtitle(int pos){
 				 V_Controller^ c = V_Controller::getController();
@@ -278,6 +279,63 @@ namespace SubEditor {
 				 String^ name = subData->getName();
 				 System::Windows::Forms::DialogResult result = MessageBox::Show("Do you want to save changes to "+name+"?","Unsaved changes",MessageBoxButtons::YesNoCancel,MessageBoxIcon::Question);
 				 return result;
+			 }
+	private: bool saveSubtitles(){
+				 String^ path;
+				 if(subData->getPath() == nullptr){ 
+					 if(this->saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
+						 String^ path = saveFileDialog1->FileName;
+					 }else{
+						 return false;//not save
+					 }
+				 }else{
+					 String^ path = subData->getPath();
+				 }
+				 V_Controller^ c = V_Controller::getController();
+				 try{
+					 System::IO::StreamWriter^ file;
+					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
+						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+					 else{
+						 switch (subData->getEncoding())
+						 {
+						 case TextFileEncoding::UTF8:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+							 break;
+						 case TextFileEncoding::UTF16B:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::BigEndianUnicode);
+ 							 break;
+						 case TextFileEncoding::UTF16L:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::Unicode);
+ 							 break;
+						 case TextFileEncoding::UTF32B:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF32);
+							 break;
+						 case TextFileEncoding::UTF7:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+							 break;
+						 default:
+							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+							 break;
+						 }
+					 }
+					 c->saveSubtitles(this,file,subData);
+					 file->Close();
+					 //Set all
+					 isSave = true;
+					 subData->setPath(path);
+					 System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
+					 subData->setName(info->Name);
+				 }catch(Exception^ e){
+					 if(DEBUG){
+					 debug = SubEditor::V_DebugForm::getDebugger();
+					 debug->Show();
+					 debug->insertLine("M_SubClass::saveSubtitles");
+					 debug->insertLine("Error al guardar el archivo");
+				 }
+				 }finally{
+				 }
+				 return true;
 			 }
 	private: void setUpDataGrid(){
 				 /*DataGridViewCellStyle^ style = dataGridView1->ColumnHeadersDefaultCellStyle;
@@ -862,13 +920,16 @@ private: System::ComponentModel::IContainer^  components;
 		// New Subtitles clean all, and creates a new subtitles. If there is a subtitle already open ask if want to save it
 		//
 	private: System::Void newSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-				 rowIndex = 0;
-				 V_Controller^ c = V_Controller::getController();
 				 if(!isSave && subData->size() > 1){
 					 System::Windows::Forms::DialogResult result = askSaveSubtitles();
 					 if(result == System::Windows::Forms::DialogResult::Yes){
+						 if(!saveSubtitles()) return;
+						 rowIndex = 0;
+						 V_Controller^ c = V_Controller::getController();
 						 c->newSubtitles(this);
 					 }else if(result == System::Windows::Forms::DialogResult::No){
+						 rowIndex = 0;
+						 V_Controller^ c = V_Controller::getController();
 						 c->newSubtitles(this);
 					 }else{
 						 return;
@@ -1035,6 +1096,10 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 						 }
 					 }
 					 c->saveSubtitles(this,file,subData);
+					 isSave = true;
+					 subData->setPath(path);
+					 System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
+					 subData->setName(info->Name);
 					 file->Close();
 				 }catch(Exception^ e){
 					 if(DEBUG){

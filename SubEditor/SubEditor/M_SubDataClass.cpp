@@ -27,6 +27,7 @@ M_SubDataClass::M_SubDataClass(void)
 	this->lastNode = nullptr;
 	this->path = nullptr;
 	this->name = "Untitled";
+	this->encoding = TextFileEncoding::UTF8;
 }
 
 M_SubDataClass::~M_SubDataClass(){
