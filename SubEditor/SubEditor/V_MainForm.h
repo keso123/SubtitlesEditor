@@ -284,16 +284,16 @@ namespace SubEditor {
 				 String^ path;
 				 if(subData->getPath() == nullptr){ 
 					 if(this->saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-						 String^ path = saveFileDialog1->FileName;
+						 path = saveFileDialog1->FileName;
 					 }else{
 						 return false;//not save
 					 }
 				 }else{
-					 String^ path = subData->getPath();
+					  path = subData->getPath();
 				 }
 				 V_Controller^ c = V_Controller::getController();
 				 try{
-					 System::IO::StreamWriter^ file;
+					 System::IO::StreamWriter^ file;/*
 					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
 						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
 					 else{
@@ -318,7 +318,8 @@ namespace SubEditor {
 							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
 							 break;
 						 }
-					 }
+					 }*/
+					 file = gcnew System::IO::StreamWriter(path,false);
 					 c->saveSubtitles(this,file,subData);
 					 file->Close();
 					 //Set all
