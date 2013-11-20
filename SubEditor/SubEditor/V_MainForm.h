@@ -456,6 +456,9 @@ private: System::ComponentModel::IContainer^  components;
 			this->editToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->subtitlesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->shiftTimesTimToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->videoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->audioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
 			this->splitContainer2 = (gcnew System::Windows::Forms::SplitContainer());
 			this->splitContainer3 = (gcnew System::Windows::Forms::SplitContainer());
@@ -483,9 +486,6 @@ private: System::ComponentModel::IContainer^  components;
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->deleteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
-			this->videoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->audioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
@@ -544,6 +544,7 @@ private: System::ComponentModel::IContainer^  components;
 			this->saveSubtitlesToolStripMenuItem->Name = L"saveSubtitlesToolStripMenuItem";
 			this->saveSubtitlesToolStripMenuItem->Size = System::Drawing::Size(169, 22);
 			this->saveSubtitlesToolStripMenuItem->Text = L"Save Subtitles";
+			this->saveSubtitlesToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::saveSubtitlesToolStripMenuItem_Click);
 			// 
 			// saveSubtitlesAsToolStripMenuItem
 			// 
@@ -577,6 +578,24 @@ private: System::ComponentModel::IContainer^  components;
 			this->shiftTimesTimToolStripMenuItem->Size = System::Drawing::Size(142, 22);
 			this->shiftTimesTimToolStripMenuItem->Text = L"Shift Times...";
 			this->shiftTimesTimToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::shiftTimesTimToolStripMenuItem_Click);
+			// 
+			// videoToolStripMenuItem
+			// 
+			this->videoToolStripMenuItem->Name = L"videoToolStripMenuItem";
+			this->videoToolStripMenuItem->Size = System::Drawing::Size(49, 20);
+			this->videoToolStripMenuItem->Text = L"Video";
+			// 
+			// audioToolStripMenuItem
+			// 
+			this->audioToolStripMenuItem->Name = L"audioToolStripMenuItem";
+			this->audioToolStripMenuItem->Size = System::Drawing::Size(51, 20);
+			this->audioToolStripMenuItem->Text = L"Audio";
+			// 
+			// helpToolStripMenuItem
+			// 
+			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
+			this->helpToolStripMenuItem->Text = L"Help";
 			// 
 			// splitContainer1
 			// 
@@ -861,24 +880,6 @@ private: System::ComponentModel::IContainer^  components;
 			this->deleteToolStripMenuItem->Text = L"Delete";
 			this->deleteToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::deleteToolStripMenuItem_Click);
 			// 
-			// videoToolStripMenuItem
-			// 
-			this->videoToolStripMenuItem->Name = L"videoToolStripMenuItem";
-			this->videoToolStripMenuItem->Size = System::Drawing::Size(49, 20);
-			this->videoToolStripMenuItem->Text = L"Video";
-			// 
-			// audioToolStripMenuItem
-			// 
-			this->audioToolStripMenuItem->Name = L"audioToolStripMenuItem";
-			this->audioToolStripMenuItem->Size = System::Drawing::Size(51, 20);
-			this->audioToolStripMenuItem->Text = L"Audio";
-			// 
-			// helpToolStripMenuItem
-			// 
-			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(44, 20);
-			this->helpToolStripMenuItem->Text = L"Help";
-			// 
 			// V_MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1070,7 +1071,7 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 
 				 String^ path = saveFileDialog1->FileName;
 				 try{
-					 System::IO::StreamWriter^ file;
+					 System::IO::StreamWriter^ file;/*
 					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
 						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
 					 else{
@@ -1095,7 +1096,8 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
 							 break;
 						 }
-					 }
+					 }*/
+					 file = gcnew System::IO::StreamWriter(path,false);
 					 c->saveSubtitles(this,file,subData);
 					 isSave = true;
 					 subData->setPath(path);
@@ -1112,6 +1114,9 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 				 }finally{
 				 }
 			 }
+		 }
+private: System::Void saveSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 saveSubtitles();
 		 }
 };
 }
