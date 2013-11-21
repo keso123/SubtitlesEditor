@@ -1,22 +1,64 @@
-﻿Compilación iniciada a las 20/11/2013 19:02:52.
+﻿Compilación iniciada a las 21/11/2013 19:32:55.
      1>Proyecto "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib V_MainForm.cpp
-         V_MainForm.cpp
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_TimeShiftForm.h(100): warning C4677: 'setObserver': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_ObserverForm'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_ObserverForm.h(24) : vea la declaración de 'M_ObserverForm'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(149): warning C4677: 'updateSubData': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(26) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(156): warning C4677: 'updataDataGrid': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass::nodeData'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(27) : vea la declaración de 'M_SubDataClass::nodeData'
-                 'M_SubDataClass::nodeData': accesibilidad del ensamblado invalidada como 'private' por el tipo envolvente 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(26) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(156): warning C4677: 'updataDataGrid': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubDataClass'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataClass.h(26) : vea la declaración de 'M_SubDataClass'
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(120): warning C4101: 'rows' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(330): warning C4101: 'e' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(959): warning C4101: 'e' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(1107): warning C4101: 'e' : variable local sin referencia
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib M_SubDataSRT.cpp
+         M_SubDataSRT.cpp
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(78): warning C4486: 'M_SubDataSRT::clear' : un método virtual privado de una clase ref o clase value se debe marcar como 'sealed'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(79): warning C4486: 'M_SubDataSRT::increaseIndex' : un método virtual privado de una clase ref o clase value se debe marcar como 'sealed'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(80): warning C4486: 'M_SubDataSRT::decreseIndex' : un método virtual privado de una clase ref o clase value se debe marcar como 'sealed'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(6): warning C4570: 'M_SubDataSRT' : no se ha declarado explícitamente como abstracto pero tiene funciones abstractas
+                 'int M_SubDataSRT::size(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(33) : vea la declaración de 'M_SubDataSRT::size'
+                 'bool M_SubDataSRT::empty(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(34) : vea la declaración de 'M_SubDataSRT::empty'
+                 'int M_SubDataSRT::getEncoding(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(35) : vea la declaración de 'M_SubDataSRT::getEncoding'
+                 'System::String ^M_SubDataSRT::getPath(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(36) : vea la declaración de 'M_SubDataSRT::getPath'
+                 'System::String ^M_SubDataSRT::getName(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(37) : vea la declaración de 'M_SubDataSRT::getName'
+                 'void M_SubDataSRT::setEncoding(int)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(38) : vea la declaración de 'M_SubDataSRT::setEncoding'
+                 'void M_SubDataSRT::setPath(System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(39) : vea la declaración de 'M_SubDataSRT::setPath'
+                 'void M_SubDataSRT::setName(System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(40) : vea la declaración de 'M_SubDataSRT::setName'
+                 'void M_SubDataSRT::insert(M_SubDataSRT::nodeData ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(41) : vea la declaración de 'M_SubDataSRT::insert'
+                 'void M_SubDataSRT::insertIn(int,M_SubDataSRT::nodeData ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(42) : vea la declaración de 'M_SubDataSRT::insertIn'
+                 'void M_SubDataSRT::erase(int)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(43) : vea la declaración de 'M_SubDataSRT::erase'
+                 'void M_SubDataSRT::edit(int)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(44) : vea la declaración de 'M_SubDataSRT::edit'
+                 'void M_SubDataSRT::moveStart(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(46) : vea la declaración de 'M_SubDataSRT::moveStart'
+                 'void M_SubDataSRT::moveEnd(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(47) : vea la declaración de 'M_SubDataSRT::moveEnd'
+                 'void M_SubDataSRT::movePrev(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(48) : vea la declaración de 'M_SubDataSRT::movePrev'
+                 'void M_SubDataSRT::moveNext(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(49) : vea la declaración de 'M_SubDataSRT::moveNext'
+                 'void M_SubDataSRT::moveTo(int)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(50) : vea la declaración de 'M_SubDataSRT::moveTo'
+                 'bool M_SubDataSRT::checkTimeString(System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(69) : vea la declaración de 'M_SubDataSRT::checkTimeString'
+                 'bool M_SubDataSRT::compareTime(System::String ^,System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(70) : vea la declaración de 'M_SubDataSRT::compareTime'
+                 'System::String ^M_SubDataSRT::increaseTime(System::String ^,System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(71) : vea la declaración de 'M_SubDataSRT::increaseTime'
+                 'System::String ^M_SubDataSRT::decraseTime(System::String ^,System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(72) : vea la declaración de 'M_SubDataSRT::decraseTime'
+                 'bool M_SubDataSRT::inOrder(System::String ^,System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(74) : vea la declaración de 'M_SubDataSRT::inOrder'
+                 'bool M_SubDataSRT::inOrderNotEqual(System::String ^,System::String ^)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(75) : vea la declaración de 'M_SubDataSRT::inOrderNotEqual'
+                 'void M_SubDataSRT::clear(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(78) : vea la declaración de 'M_SubDataSRT::clear'
+                 'void M_SubDataSRT::increaseIndex(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(79) : vea la declaración de 'M_SubDataSRT::increaseIndex'
+                 'void M_SubDataSRT::decreseIndex(void)' : es abstracto
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubDataSRT.h(80) : vea la declaración de 'M_SubDataSRT::decreseIndex'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\SubEditor.V_DebugForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_MainForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_TimeShiftForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\I_DAOFactory.obj
          Debug\I_DAOSub.obj
@@ -26,6 +68,7 @@
          Debug\M_Properties.obj
          Debug\M_SubClass.obj
          Debug\M_SubDataClass.obj
+         Debug\M_SubDataSRT.obj
          Debug\V_Controller.obj
          Debug\V_DebugForm.obj
          Debug\V_MainForm.obj
@@ -36,4 +79,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:04.84
+Tiempo transcurrido 00:00:06.00
