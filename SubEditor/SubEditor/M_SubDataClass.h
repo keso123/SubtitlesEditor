@@ -22,7 +22,7 @@
 
 using namespace System;
 
-ref class M_SubDataClass
+ref class M_SubDataClass //abstract
 {
 public: ref struct nodeData{
 			 int ind;

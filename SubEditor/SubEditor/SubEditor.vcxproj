@@ -85,6 +85,7 @@
     <ClCompile Include="M_ObserverForm.cpp" />
     <ClCompile Include="M_Properties.cpp" />
     <ClCompile Include="M_SubClass.cpp" />
+    <ClCompile Include="M_SubData.cpp" />
     <ClCompile Include="M_SubDataClass.cpp" />
     <ClCompile Include="M_SubDataSRT.cpp" />
     <ClCompile Include="V_Controller.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="M_ObserverForm.h" />
     <ClInclude Include="M_Properties.h" />
     <ClInclude Include="M_SubClass.h" />
+    <ClInclude Include="M_SubData.h" />
     <ClInclude Include="M_SubDataClass.h" />
     <ClInclude Include="M_SubDataSRT.h" />
     <ClInclude Include="SharedTypes.h" />

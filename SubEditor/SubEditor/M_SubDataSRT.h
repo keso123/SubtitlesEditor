@@ -18,22 +18,22 @@
  */
 #pragma once
 
-#include "M_SubDataClass.h"
+#include "M_SubData.h"
 
 using namespace System;
 
-ref class M_SubDataSRT : public M_SubDataClass
+ref class M_SubDataSRT : public M_SubData
 {
-public: ref struct nodeData{
+/*public: ref struct nodeData{
 			 int ind;
 			 int start;
 			 int end;
 			 String^ sStart;
 			 String^ sEnd;
 			 String^ text;
-		 };
+		 };*/
 private: ref struct node{
-			nodeData^ data;
+			M_SubData::nodeData^ data;
 			node^ next;
 			node^ prev;
 		 };
@@ -50,54 +50,54 @@ public:
 	M_SubDataSRT(void);
 	virtual ~M_SubDataSRT(void);
 
-	virtual int size()=0;
-	virtual bool empty()=0;
-	virtual int getEncoding()=0;
-	virtual String^ getPath()=0;
-	virtual String^ getName()=0;
-	virtual void setEncoding(int enc)=0;
-	virtual void setPath(String^ path)=0;
-	virtual void setName(String^ name)=0;
-	virtual void insert(nodeData^ data)=0;//OK
-	virtual void insertIn(int pos, nodeData^ data)=0;//OK
-	virtual void erase(int pos)=0;//NOT FINISHED
-	virtual void edit(int pos)=0;//NOT FINISHED
+	virtual int size();
+	virtual bool empty();
+	virtual int getEncoding();
+	virtual String^ getPath();
+	virtual String^ getName();
+	virtual void setEncoding(int enc);
+	virtual void setPath(String^ path);
+	virtual void setName(String^ name);
+	virtual void insert(M_SubData::nodeData^ data);//OK
+	virtual void insertIn(int pos, M_SubData::nodeData^ data);//OK
+	virtual void erase(int pos);//NOT FINISHED
+	virtual void edit(int pos);//NOT FINISHED
 	
-	virtual void moveStart()=0;//OK
-	virtual void moveEnd()=0;//OK
-	virtual void movePrev()=0;//OK
-	virtual void moveNext()=0;//OK
-	virtual void moveTo(int index)=0;//OK
-	nodeData^ getCurrentData(){
+	virtual void moveStart();//OK
+	virtual void moveEnd();//OK
+	virtual void movePrev();//OK
+	virtual void moveNext();//OK
+	virtual void moveTo(int index);//OK
+	M_SubData::nodeData^ getCurrentData(){
 		return currentNode->data;
 	}
 
-	nodeData^ getFirst(){
+	M_SubData::nodeData^ getFirst(){
 		return firstNode->data;
 	}
-	nodeData^ getCurrent(){
+	M_SubData::nodeData^ getCurrent(){
 		return currentNode->data;
 	}
-	nodeData^ getLast(){
+	M_SubData::nodeData^ getLast(){
 		return lastNode->data;
 	}
-	nodeData^ get(int pos){
+	M_SubData::nodeData^ get(int pos){
 		moveTo(pos);
 		return currentNode->data;
 	}
 
-	virtual bool checkTimeString(String^ s)=0;//OK
-	virtual bool compareTime(String^ s1, String^ s2)=0;//OK
-	virtual String^ increaseTime(String^ s, String^ inc)=0;//OK
-	virtual String^ decraseTime(String^ s, String^ dec)=0;//OK
-	String^ getInterval(String^ start, String^ end){return "";}//NOT USED
-	virtual bool inOrder(String^ start, String^ end)=0;//OK
-	virtual bool inOrderNotEqual(String^ start, String^ end)=0;//OK
+	virtual bool checkTimeString(String^ s);//OK
+	virtual bool compareTime(String^ s1, String^ s2);//OK
+	virtual String^ increaseTime(String^ s, String^ inc);//OK
+	virtual String^ decraseTime(String^ s, String^ dec);//OK
+	virtual String^ getInterval(String^ start, String^ end){return "";}//NOT USED
+	virtual bool inOrder(String^ start, String^ end);//OK
+	virtual bool inOrderNotEqual(String^ start, String^ end);//OK
 
-private:
-	virtual void clear()=0;//OK
-	virtual void increaseIndex()=0;//NOT TESTED
-	virtual void decreseIndex()=0;
+//private:
+	virtual void clear();//OK
+	virtual void increaseIndex();//NOT TESTED
+	virtual void decreseIndex();
 	int toMilliSeconds(String^ time){return 0;}//NOT USED
 	String^ toTimeString(int milliSeconds){return "";}//NOT USED
 };

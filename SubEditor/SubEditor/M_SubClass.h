@@ -27,7 +27,7 @@ using namespace System;
 
 ref class M_SubClass : public M_ObservableForm
 {
-private: M_SubDataClass subtitles;
+//private: M_SubDataClass subtitles;
 
 public:
 	M_SubClass(void);
