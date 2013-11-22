@@ -22,7 +22,7 @@
 
 using namespace System;
 
-interface class M_SubData
+public ref class M_SubData abstract
 {
 public: ref struct nodeData{
 			 int ind;
@@ -31,30 +31,45 @@ public: ref struct nodeData{
 			 String^ sStart;
 			 String^ sEnd;
 			 String^ text;
+			 //more stuff
 		 };
-
+private: ref struct node{
+			M_SubData::nodeData^ data;
+			node^ next;
+			node^ prev;
+		 };
+private:
+	int counter;
+	node^ currentNode;
+	node^ firstNode;
+	node^ lastNode;
+	String^ path;
+	int encoding;
+	String^ name;
+		 
 public:
-	//M_SubData(void);
-	//virtual ~M_SubData(void);
-	virtual int size()=0;
-	virtual bool empty()=0;
-	virtual int getEncoding()=0;
-	virtual String^ getPath()=0;
-	virtual String^ getName()=0;
-	virtual void setEncoding(int enc)=0;
-	virtual void setPath(String^ path)=0;
-	virtual void setName(String^ name)=0;
-	virtual void insert(nodeData^ data)=0;//OK
-	virtual void insertIn(int pos, nodeData^ data)=0;//OK
-	virtual void erase(int pos)=0;//NOT FINISHED
-	virtual void edit(int pos)=0;//NOT FINISHED
+	M_SubData(void);
+	virtual ~M_SubData(void);
+
+	int size();
+	bool empty();
+	int getEncoding();
+	String^ getPath();
+	String^ getName();
+	void setEncoding(int enc);
+	void setPath(String^ path);
+	void setName(String^ name);
+	void insert(nodeData^ data);//OK
+	void insertIn(int pos, nodeData^ data);//OK
+	void erase(int pos);//NOT FINISHED
+	void edit(int pos);//NOT FINISHED
 	
-	virtual void moveStart()=0;//OK
-	virtual void moveEnd()=0;//OK
-	virtual void movePrev()=0;//OK
-	virtual void moveNext()=0;//OK
-	virtual void moveTo(int index)=0;//OK
-	/*nodeData^ getCurrentData(){
+	void moveStart();//OK
+	void moveEnd();//OK
+	void movePrev();//OK
+	void moveNext();//OK
+	void moveTo(int index);//OK
+	nodeData^ getCurrentData(){
 		return currentNode->data;
 	}
 
@@ -70,7 +85,7 @@ public:
 	nodeData^ get(int pos){
 		moveTo(pos);
 		return currentNode->data;
-	}*/
+	}
 
 	virtual bool checkTimeString(String^ s)=0;//OK
 	virtual bool compareTime(String^ s1, String^ s2)=0;//OK
@@ -79,9 +94,9 @@ public:
 	virtual bool inOrder(String^ start, String^ end)=0;//OK
 	virtual bool inOrderNotEqual(String^ start, String^ end)=0;//OK
 
-//private:
-	virtual void clear()=0;//OK
-	virtual void increaseIndex()=0;//NOT TESTED
-	virtual void decreseIndex()=0;
+protected:
+	void clear();//OK
+	void increaseIndex();//NOT TESTED
+	void decreseIndex();
 };
 

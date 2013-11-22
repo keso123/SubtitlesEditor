@@ -25,6 +25,49 @@ Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIn
     setText(String): PrivateScope, Public, HideBySig
     clearText(): PrivateScope, Public, HideBySig
     insertLine(String): PrivateScope, Public, HideBySig
+Class M_SubData: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    size(): PrivateScope, Public, HideBySig
+    empty(): PrivateScope, Public, HideBySig
+    getEncoding(): PrivateScope, Public, HideBySig
+    getPath(): PrivateScope, Public, HideBySig
+    getName(): PrivateScope, Public, HideBySig
+    setEncoding(Int32): PrivateScope, Public, HideBySig
+    setPath(String): PrivateScope, Public, HideBySig
+    setName(String): PrivateScope, Public, HideBySig
+    insert(nodeData): PrivateScope, Public, HideBySig
+    insertIn(Int32, nodeData): PrivateScope, Public, HideBySig
+    erase(Int32): PrivateScope, Public, HideBySig
+    edit(Int32): PrivateScope, Public, HideBySig
+    moveStart(): PrivateScope, Public, HideBySig
+    moveEnd(): PrivateScope, Public, HideBySig
+    movePrev(): PrivateScope, Public, HideBySig
+    moveNext(): PrivateScope, Public, HideBySig
+    moveTo(Int32): PrivateScope, Public, HideBySig
+    getCurrentData(): PrivateScope, Public, HideBySig
+    getFirst(): PrivateScope, Public, HideBySig
+    getCurrent(): PrivateScope, Public, HideBySig
+    getLast(): PrivateScope, Public, HideBySig
+    get(Int32): PrivateScope, Public, HideBySig
+    checkTimeString(String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    compareTime(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    increaseTime(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    decraseTime(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    inOrder(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    inOrderNotEqual(String, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask, Abstract
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class M_SubData+nodeData: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 ind : Public
+    Int32 start : Public
+    Int32 end : Public
+    System.String sStart : Public
+    System.String sEnd : Public
+    System.String text : Public
 Class SubEditor.V_TimeShiftForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
