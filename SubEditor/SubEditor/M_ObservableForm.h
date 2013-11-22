@@ -19,7 +19,7 @@
 #pragma once
 
 #include "M_ObserverForm.h"
-#include "M_SubDataClass.h"
+#include "M_SubData.h"
 
 ref class M_ObservableForm
 {
@@ -29,9 +29,9 @@ public:
 	virtual ~M_ObservableForm(void);
 	
 	void addObserver(M_ObserverForm^ observer);
-	void notifySubData(M_SubDataClass^ data);
+	void notifySubData(M_SubData^ data);
 	void notifyDataGrid();
-	void notifyDataGrid(int row, M_SubDataClass::nodeData^ data);
+	void notifyDataGrid(int row, M_SubData::nodeData^ data);
 	void notifyNotEnoughRoomSub();
 	void notifyNotErase();
 	void notifySaveOK();

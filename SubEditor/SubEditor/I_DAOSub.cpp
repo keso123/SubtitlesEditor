@@ -25,7 +25,7 @@ I_DAOSub::I_DAOSub(void)
 I_DAOSub::~I_DAOSub(void){
 }
 
-bool I_DAOSub::parseInd(String^ line, M_SubDataClass::nodeData^ data){
+bool I_DAOSub::parseInd(String^ line, M_SubData::nodeData^ data){
 	try{
 		int ind = Convert::ToInt16(line);
 		data->ind = ind;
@@ -36,7 +36,7 @@ bool I_DAOSub::parseInd(String^ line, M_SubDataClass::nodeData^ data){
 	}
 	return false;
 }
-bool I_DAOSub::parseStartEnd(String^ line, M_SubDataClass::nodeData^ data){
+bool I_DAOSub::parseStartEnd(String^ line, M_SubData::nodeData^ data){
 	int ind = line->IndexOf(" --> ");
 	String^ sStart = line->Substring(0,ind);
 	ind += 5;
@@ -47,7 +47,7 @@ bool I_DAOSub::parseStartEnd(String^ line, M_SubDataClass::nodeData^ data){
 	data->end = 0;
 	return false;
 }
-bool I_DAOSub::parseText(System::IO::StreamReader^ file, M_SubDataClass::nodeData^ data){
+bool I_DAOSub::parseText(System::IO::StreamReader^ file, M_SubData::nodeData^ data){
 	String^ text = "";
 	String^ line = file->ReadLine();
 	//text += line;
@@ -59,13 +59,13 @@ bool I_DAOSub::parseText(System::IO::StreamReader^ file, M_SubDataClass::nodeDat
 	return false;
 }
 
-bool I_DAOSub::loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub){
-	M_SubDataClass::nodeData^ data;
+bool I_DAOSub::loadSubtitles(System::IO::StreamReader^ file, M_SubData^ sub){
+	M_SubData::nodeData^ data;
 
 	bool error = false;
 	while(file->EndOfStream == false && !error){
 		String^ line = file->ReadLine();
-		data = gcnew M_SubDataClass::nodeData;
+		data = gcnew M_SubData::nodeData;
 		error = parseInd(line,data);
 		if(!error){
 			line = file->ReadLine();
@@ -78,7 +78,7 @@ bool I_DAOSub::loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub
 	}
 	return true;
 }
-bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub){
+bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubData^ sub){
 	int i = 1;
 	sub->moveStart();
 	String^ aux = "";

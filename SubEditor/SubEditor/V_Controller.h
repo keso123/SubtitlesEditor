@@ -38,12 +38,12 @@ public: ~V_Controller();
 		//void setObserver(SubEditor::V_MainForm^ form);
 		void newSubtitles(M_ObserverForm^ form);
 		void openSubtitles(M_ObserverForm^ form, System::IO::StreamReader^ file, int encoding, String^ path, String^ name);
-		void saveSubtitles(M_ObserverForm^ form, System::IO::StreamWriter^ file,M_SubDataClass^ data);
+		void saveSubtitles(M_ObserverForm^ form, System::IO::StreamWriter^ file,M_SubData^ data);
 		OpenFileError checkFile(M_ObserverForm^ form, String^ path, int& encoding, String^& name);
-		void editSubtitles(M_ObserverForm^ form, M_SubDataClass^ data);
-		void editSubtitlesText(M_ObserverForm^ form, M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
-		void insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
-		void eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos);
-		void shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow);
+		void editSubtitles(M_ObserverForm^ form, M_SubData^ data);
+		void editSubtitlesText(M_ObserverForm^ form, M_SubData^ data, int pos, String^ start, String^ end, String^ text);
+		void insertSubtitles(M_ObserverForm^ form, M_SubData^ data, int pos);
+		void eraseSubtitles(M_ObserverForm^ form, M_SubData^ data, int pos);
+		void shiftTime(M_ObserverForm^ form, M_SubData^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow);
 };
 

@@ -16,15 +16,6 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
-Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
-  :System.Windows.Forms.Form
-  Methods:
-    getDebugger(): PrivateScope, Public, Static, HideBySig
-    resetDebugger(): PrivateScope, Public, Static, HideBySig
-    setWindowLocation(Int32, Int32): PrivateScope, Public, HideBySig
-    setText(String): PrivateScope, Public, HideBySig
-    clearText(): PrivateScope, Public, HideBySig
-    insertLine(String): PrivateScope, Public, HideBySig
 Class M_SubData: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -68,6 +59,15 @@ Class M_SubData+nodeData: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFiel
     System.String sStart : Public
     System.String sEnd : Public
     System.String text : Public
+Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+  Methods:
+    getDebugger(): PrivateScope, Public, Static, HideBySig
+    resetDebugger(): PrivateScope, Public, Static, HideBySig
+    setWindowLocation(Int32, Int32): PrivateScope, Public, HideBySig
+    setText(String): PrivateScope, Public, HideBySig
+    clearText(): PrivateScope, Public, HideBySig
+    insertLine(String): PrivateScope, Public, HideBySig
 Class SubEditor.V_TimeShiftForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -81,7 +81,7 @@ Class SubEditor.V_MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
   Methods:
     updateDataGrid(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     updateSubData(Int32, Int32, Int32, Int32, String): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
-    updateSubData(M_SubDataClass): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
+    updateSubData(M_SubData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     updataDataGrid(Int32, nodeData): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     errorNotEnoughRoomSub(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask
     errorNotErase(): PrivateScope, Public, Virtual, HideBySig, VtableLayoutMask

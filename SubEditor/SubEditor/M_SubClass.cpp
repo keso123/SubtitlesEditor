@@ -27,8 +27,8 @@ M_SubClass::~M_SubClass(){
 }
 
 void M_SubClass::newSubtitles(){
-	M_SubDataClass^ sub = gcnew M_SubDataClass();
-	M_SubDataClass::nodeData^ data = gcnew M_SubDataClass::nodeData;
+	M_SubData^ sub = gcnew M_SubDataSRT();
+	M_SubData::nodeData^ data = gcnew M_SubData::nodeData;
 	data->ind = 1;
 	data->start = 0;
 	data->end = 5000;
@@ -41,15 +41,15 @@ void M_SubClass::newSubtitles(){
 }
 
 void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name){
-	M_SubDataClass^ sub = gcnew M_SubDataClass();
+	M_SubData^ sub = gcnew M_SubDataSRT();
 
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
 	I_DAOSub^ dao = fac->getDAOSub();
 
 	if(dao->loadSubtitles(file,sub)){
 		delete dao;
-		M_SubDataClass::nodeData^ last = sub->getLast();
-		M_SubDataClass::nodeData^ node = gcnew M_SubDataClass::nodeData;
+		M_SubData::nodeData^ last = sub->getLast();
+		M_SubData::nodeData^ node = gcnew M_SubData::nodeData;
 		node->ind = last->ind + 1;
 		node->sStart = last->sEnd;//sub->increaseTime(last->sEnd, "00:00:00,001");
 		node->sEnd = sub->increaseTime(node->sStart, "00:00:01,000");
@@ -64,8 +64,8 @@ void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, Str
 		delete dao;
 	}
 }
-void M_SubClass::saveSubtitles(System::IO::StreamWriter^ file,M_SubDataClass^ data){
-	M_SubDataClass^ sub = gcnew M_SubDataClass();
+void M_SubClass::saveSubtitles(System::IO::StreamWriter^ file,M_SubData^ data){
+	M_SubData^ sub = gcnew M_SubDataSRT();
 
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
 	I_DAOSub^ dao = fac->getDAOSub();
@@ -77,17 +77,17 @@ void M_SubClass::saveSubtitles(System::IO::StreamWriter^ file,M_SubDataClass^ da
 	delete dao;
 }
 
-void M_SubClass::editSubtitle(M_SubDataClass^ data){
+void M_SubClass::editSubtitle(M_SubData^ data){
 	//data->edit
 
 }
 
-void M_SubClass::editSubtitleText(M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text){
+void M_SubClass::editSubtitleText(M_SubData^ data, int pos, String^ start, String^ end, String^ text){
 	data->moveTo(pos - 1);
-	M_SubDataClass::nodeData^ prev = data->getCurrent();
+	M_SubData::nodeData^ prev = data->getCurrent();
 	data->moveTo(pos + 1);
-	M_SubDataClass::nodeData^ next = data->getCurrent();
-	M_SubDataClass::nodeData^ d = data->get(pos);
+	M_SubData::nodeData^ next = data->getCurrent();
+	M_SubData::nodeData^ d = data->get(pos);
 	if(DEBUG){
 		SubEditor::V_DebugForm^ debug = SubEditor::V_DebugForm::getDebugger();
 		debug->Show();
@@ -124,8 +124,8 @@ void M_SubClass::editSubtitleText(M_SubDataClass^ data, int pos, String^ start, 
 	d->sEnd = end;
 	d->text = text;
 	if(pos == data->size()){
-		M_SubDataClass::nodeData^ last = data->getLast();
-		M_SubDataClass::nodeData^ node = gcnew M_SubDataClass::nodeData;
+		M_SubData::nodeData^ last = data->getLast();
+		M_SubData::nodeData^ node = gcnew M_SubData::nodeData;
 		node->ind = last->ind + 1;
 		node->sStart = last->sEnd;//data->increaseTime(last->sEnd, "00:00:00,001");
 		node->sEnd = data->increaseTime(node->sStart, "00:00:01,000");
@@ -136,11 +136,11 @@ void M_SubClass::editSubtitleText(M_SubDataClass^ data, int pos, String^ start, 
 		notifyDataGrid(pos-1,d);
 	}
 }
-void M_SubClass::insertSubtitles(M_SubDataClass^ data, int pos){
+void M_SubClass::insertSubtitles(M_SubData^ data, int pos){
 	data->moveTo(pos - 1);
-	M_SubDataClass::nodeData^ prev = data->getCurrent();
+	M_SubData::nodeData^ prev = data->getCurrent();
 	data->moveTo(pos);
-	M_SubDataClass::nodeData^ next = data->getCurrent();
+	M_SubData::nodeData^ next = data->getCurrent();
 	if(DEBUG){
 		SubEditor::V_DebugForm^ debug = SubEditor::V_DebugForm::getDebugger();
 		debug->Show();
@@ -151,7 +151,7 @@ void M_SubClass::insertSubtitles(M_SubDataClass^ data, int pos){
 	if(!data->inOrderNotEqual(prev->sEnd,next->sStart)){
 		notifyNotEnoughRoomSub();
 	}else{
-		M_SubDataClass::nodeData^ node = gcnew M_SubDataClass::nodeData;
+		M_SubData::nodeData^ node = gcnew M_SubData::nodeData;
 		node->sStart = prev->sEnd;
 		node->sEnd = next->sStart;
 		node->text = "";
@@ -160,7 +160,7 @@ void M_SubClass::insertSubtitles(M_SubDataClass^ data, int pos){
 		notifyDataGrid();
 	}
 }
-void M_SubClass::eraseSubtitles(M_SubDataClass^ data, int pos){
+void M_SubClass::eraseSubtitles(M_SubData^ data, int pos){
 	if(pos == data->size()){
 		if(DEBUG){
 			SubEditor::V_DebugForm^ debug = SubEditor::V_DebugForm::getDebugger();
@@ -175,8 +175,8 @@ void M_SubClass::eraseSubtitles(M_SubDataClass^ data, int pos){
 	notifyDataGrid();
 }
 
-void M_SubClass::shiftForwardAll(M_SubDataClass^ data, int timesAffected, String^ time){
-	M_SubDataClass::nodeData^ node;
+void M_SubClass::shiftForwardAll(M_SubData^ data, int timesAffected, String^ time){
+	M_SubData::nodeData^ node;
 	data->moveEnd();
 	int i = data->size();
 	while(i > 0){
@@ -198,9 +198,9 @@ void M_SubClass::shiftForwardAll(M_SubDataClass^ data, int timesAffected, String
 	}
 	notifyDataGrid();
 }
-void M_SubClass::shiftForwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+void M_SubClass::shiftForwardForward(M_SubData^ data, int timesAffected, int pos, String^ time){
 	data->moveEnd();
-	M_SubDataClass::nodeData^ node;
+	M_SubData::nodeData^ node;
 	int i = data->size();
 	while(i >= pos){
 		node = data->getCurrent();
@@ -221,9 +221,9 @@ void M_SubClass::shiftForwardForward(M_SubDataClass^ data, int timesAffected, in
 	}
 	notifyDataGrid();
 }
-void M_SubClass::shiftForwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+void M_SubClass::shiftForwardBackward(M_SubData^ data, int timesAffected, int pos, String^ time){
 	data->moveTo(pos);
-	M_SubDataClass::nodeData^ node;
+	M_SubData::nodeData^ node;
 	int i = pos;
 	while(i > 0){
 		node = data->getCurrent();
@@ -244,9 +244,9 @@ void M_SubClass::shiftForwardBackward(M_SubDataClass^ data, int timesAffected, i
 	}
 	notifyDataGrid();
 }
-void M_SubClass::shiftBackwardAll(M_SubDataClass^ data, int timesAffected, String^ time){
+void M_SubClass::shiftBackwardAll(M_SubData^ data, int timesAffected, String^ time){
 	data->moveStart();
-	M_SubDataClass::nodeData^ node;
+	M_SubData::nodeData^ node;
 	int i = 1;
 	while(i <= data->size()){
 		node = data->getCurrent();
@@ -267,9 +267,9 @@ void M_SubClass::shiftBackwardAll(M_SubDataClass^ data, int timesAffected, Strin
 	}
 	notifyDataGrid();
 }
-void M_SubClass::shiftBackwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+void M_SubClass::shiftBackwardForward(M_SubData^ data, int timesAffected, int pos, String^ time){
 	data->moveTo(pos);
-	M_SubDataClass::nodeData^ node;
+	M_SubData::nodeData^ node;
 	int i = pos;
 	while(i <= data->size()){
 		node = data->getCurrent();
@@ -290,9 +290,9 @@ void M_SubClass::shiftBackwardForward(M_SubDataClass^ data, int timesAffected, i
 	}
 	notifyDataGrid();
 }
-void M_SubClass::shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time){
+void M_SubClass::shiftBackwardBackward(M_SubData^ data, int timesAffected, int pos, String^ time){
 	data->moveTo(pos);
-	M_SubDataClass::nodeData^ node;
+	M_SubData::nodeData^ node;
 	int i = pos;
 	while(i > 0){
 		node = data->getCurrent();

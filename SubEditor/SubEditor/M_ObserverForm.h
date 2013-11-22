@@ -18,7 +18,7 @@
  */
 #pragma once
 
-#include "M_SubDataClass.h"
+#include "M_SubData.h"
 
 interface class M_ObserverForm
 {
@@ -26,8 +26,8 @@ public:
 	//M_ObserverForm(void){}
 	//virtual ~M_ObserverForm(void){}
 	virtual void updateDataGrid()=0;
-	virtual void updateSubData(M_SubDataClass^ data)=0;
-	virtual void updataDataGrid(int row, M_SubDataClass::nodeData^ data)=0;
+	virtual void updateSubData(M_SubData^ data)=0;
+	virtual void updataDataGrid(int row, M_SubData::nodeData^ data)=0;
 	virtual void errorNotEnoughRoomSub()=0;
 	virtual void errorNotErase()=0;
 	//between guis

@@ -56,7 +56,7 @@ void V_Controller::openSubtitles(M_ObserverForm^ form, System::IO::StreamReader^
 	delete subClass;
 }
 
-void V_Controller::saveSubtitles(M_ObserverForm^ form, System::IO::StreamWriter^ file,M_SubDataClass^ data){
+void V_Controller::saveSubtitles(M_ObserverForm^ form, System::IO::StreamWriter^ file,M_SubData^ data){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
@@ -74,7 +74,7 @@ OpenFileError V_Controller::checkFile(M_ObserverForm^ form,String^ path, int& en
 	return result;
 }
 
-void V_Controller::editSubtitles(M_ObserverForm^ form, M_SubDataClass^ data){
+void V_Controller::editSubtitles(M_ObserverForm^ form, M_SubData^ data){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
@@ -83,7 +83,7 @@ void V_Controller::editSubtitles(M_ObserverForm^ form, M_SubDataClass^ data){
 
 }
 
-void V_Controller::editSubtitlesText(M_ObserverForm^ form, M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text){
+void V_Controller::editSubtitlesText(M_ObserverForm^ form, M_SubData^ data, int pos, String^ start, String^ end, String^ text){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
@@ -93,7 +93,7 @@ void V_Controller::editSubtitlesText(M_ObserverForm^ form, M_SubDataClass^ data,
 	delete subClass;
 }
 
-void V_Controller::insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos){
+void V_Controller::insertSubtitles(M_ObserverForm^ form, M_SubData^ data, int pos){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
@@ -103,7 +103,7 @@ void V_Controller::insertSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, i
 	delete subClass;
 }
 
-void V_Controller::eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, int pos){
+void V_Controller::eraseSubtitles(M_ObserverForm^ form, M_SubData^ data, int pos){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
@@ -112,7 +112,7 @@ void V_Controller::eraseSubtitles(M_ObserverForm^ form, M_SubDataClass^ data, in
 
 	delete subClass;
 }
-void V_Controller::shiftTime(M_ObserverForm^ form, M_SubDataClass^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow){
+void V_Controller::shiftTime(M_ObserverForm^ form, M_SubData^ data, int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time, int selectedRow){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);

@@ -110,7 +110,7 @@ namespace SubEditor {
 	private: bool keyShift;
 	private: V_DebugForm^ debug;
 	private: int rowIndex;
-	private: M_SubDataClass^ subData;
+	private: M_SubData^ subData;
 	private: bool isSave;
 	//
 	// Interface M_ObserverForm code
@@ -121,7 +121,7 @@ namespace SubEditor {
 				int cnt = 1;
 				subData->moveStart();
 				while(cnt <= subData->size()){
-					M_SubDataClass::nodeData^ data = subData->getCurrentData();
+					M_SubData::nodeData^ data = subData->getCurrentData();
 					array<String^>^ row = gcnew array<String^>{data->ind.ToString(),
 						data->sStart,data->sEnd,data->text};
 					dataGridView1->Rows->Add( row );
@@ -146,14 +146,14 @@ namespace SubEditor {
 					 dataGridView1->Rows->Add( rowArray );
 				  }*/
 			}
-	public: virtual void updateSubData(M_SubDataClass^ data){
+	public: virtual void updateSubData(M_SubData^ data){
 				if(subData != nullptr){
 					delete subData;
 					subData = nullptr;
 				}
 				subData = data;
 			}
-	public: virtual void updataDataGrid(int row, M_SubDataClass::nodeData^ data){
+	public: virtual void updataDataGrid(int row, M_SubData::nodeData^ data){
 				DataGridViewRow^ r = dataGridView1->Rows[row];
 				r->Cells[0]->Value = data->ind.ToString();
 				r->Cells[1]->Value = data->sStart;

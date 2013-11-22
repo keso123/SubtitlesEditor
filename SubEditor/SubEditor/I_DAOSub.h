@@ -21,22 +21,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "M_SubDataClass.h"
+//#include "M_SubDataClass.h"
+#include "M_SubData.h"
 #include "SharedTypes.h"
 
 ref class I_DAOSub
 {
 private:
-	bool parseInd(String^ line, M_SubDataClass::nodeData^ data);
-	bool parseStartEnd(String^ line, M_SubDataClass::nodeData^ data);
-	bool parseText(System::IO::StreamReader^ file, M_SubDataClass::nodeData^ data);
+	bool parseInd(String^ line, M_SubData::nodeData^ data);
+	bool parseStartEnd(String^ line, M_SubData::nodeData^ data);
+	bool parseText(System::IO::StreamReader^ file, M_SubData::nodeData^ data);
 
 public:
 	I_DAOSub(void);
 	virtual ~I_DAOSub(void);
 
-	bool loadSubtitles(System::IO::StreamReader^ file, M_SubDataClass^ sub);
-	bool saveSubtitles(System::IO::StreamWriter^ file, M_SubDataClass^ sub);
+	bool loadSubtitles(System::IO::StreamReader^ file, M_SubData^ sub);
+	bool saveSubtitles(System::IO::StreamWriter^ file, M_SubData^ sub);
 	OpenFileError checkFile(String^ path, int& encoding, String^& name);
 };
 

@@ -19,7 +19,9 @@
 #pragma once
 
 #include "M_ObservableForm.h"
-#include "M_SubDataClass.h"
+//#include "M_SubDataClass.h"
+#include "M_SubData.h"
+#include "M_SubDataSRT.h"
 #include "I_DAOFactory.h"
 #include "V_DebugForm.h"
 
@@ -35,18 +37,18 @@ public:
 
 	void newSubtitles();
 	void openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name);
-	void saveSubtitles(System::IO::StreamWriter^ file,M_SubDataClass^ data);
-	void editSubtitle(M_SubDataClass^ data);
-	void editSubtitleText(M_SubDataClass^ data, int pos, String^ start, String^ end, String^ text);
-	void insertSubtitles(M_SubDataClass^ data, int pos);
-	void eraseSubtitles(M_SubDataClass^ data, int pos);
+	void saveSubtitles(System::IO::StreamWriter^ file,M_SubData^ data);
+	void editSubtitle(M_SubData^ data);
+	void editSubtitleText(M_SubData^ data, int pos, String^ start, String^ end, String^ text);
+	void insertSubtitles(M_SubData^ data, int pos);
+	void eraseSubtitles(M_SubData^ data, int pos);
 
-	void shiftForwardAll(M_SubDataClass^ data, int timesAffected, String^ time);
-	void shiftForwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
-	void shiftForwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
-	void shiftBackwardAll(M_SubDataClass^ data, int timesAffected, String^ time);
-	void shiftBackwardForward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
-	void shiftBackwardBackward(M_SubDataClass^ data, int timesAffected, int pos, String^ time);
+	void shiftForwardAll(M_SubData^ data, int timesAffected, String^ time);
+	void shiftForwardForward(M_SubData^ data, int timesAffected, int pos, String^ time);
+	void shiftForwardBackward(M_SubData^ data, int timesAffected, int pos, String^ time);
+	void shiftBackwardAll(M_SubData^ data, int timesAffected, String^ time);
+	void shiftBackwardForward(M_SubData^ data, int timesAffected, int pos, String^ time);
+	void shiftBackwardBackward(M_SubData^ data, int timesAffected, int pos, String^ time);
 
 	OpenFileError checkFile(String^ path, int& encoding, String^& name);
 };

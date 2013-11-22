@@ -30,7 +30,7 @@ void M_ObservableForm::addObserver(M_ObserverForm^ observer){
 	this->observer = observer;
 }
 
-void M_ObservableForm::notifySubData(M_SubDataClass^ data){
+void M_ObservableForm::notifySubData(M_SubData^ data){
 	observer->updateSubData(data);
 }
 
@@ -38,7 +38,7 @@ void M_ObservableForm::notifyDataGrid(){
 	observer->updateDataGrid();
 }
 
-void M_ObservableForm::notifyDataGrid(int row, M_SubDataClass::nodeData^ data){
+void M_ObservableForm::notifyDataGrid(int row, M_SubData::nodeData^ data){
 	observer->updataDataGrid(row,data);
 }
 
