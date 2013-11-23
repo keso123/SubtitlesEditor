@@ -40,28 +40,30 @@ void M_SubClass::newSubtitles(){
 	notifyDataGrid();
 }
 
-void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name){
-	M_SubData^ sub = gcnew M_SubDataSRT();
+void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name, int type){
+	if(type == SubtitlesType::SRT){
+		M_SubData^ sub = gcnew M_SubDataSRT();
 
-	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
-	I_DAOSub^ dao = fac->getDAOSub();
+		I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
+		I_DAOSub^ dao = fac->getDAOSub();
 
-	if(dao->loadSubtitles(file,sub)){
-		delete dao;
-		M_SubData::nodeData^ last = sub->getLast();
-		M_SubData::nodeData^ node = gcnew M_SubData::nodeData;
-		node->ind = last->ind + 1;
-		node->sStart = last->sEnd;//sub->increaseTime(last->sEnd, "00:00:00,001");
-		node->sEnd = sub->increaseTime(node->sStart, "00:00:01,000");
-		node->text = "";
-		sub->insert(node);
-		sub->setEncoding(encoding);
-		sub->setPath(path);
-		sub->setName(name);
-		notifySubData(sub);
-		notifyDataGrid();
-	}else{
-		delete dao;
+		if(dao->loadSubtitles(file,sub)){
+			delete dao;
+			M_SubData::nodeData^ last = sub->getLast();
+			M_SubData::nodeData^ node = gcnew M_SubData::nodeData;
+			node->ind = last->ind + 1;
+			node->sStart = last->sEnd;//sub->increaseTime(last->sEnd, "00:00:00,001");
+			node->sEnd = sub->increaseTime(node->sStart, "00:00:01,000");
+			node->text = "";
+			sub->insert(node);
+			sub->setEncoding(encoding);
+			sub->setPath(path);
+			sub->setName(name);
+			notifySubData(sub);
+			notifyDataGrid();
+		}else{
+			delete dao;
+		}
 	}
 }
 void M_SubClass::saveSubtitles(System::IO::StreamWriter^ file,M_SubData^ data){
@@ -314,11 +316,11 @@ void M_SubClass::shiftBackwardBackward(M_SubData^ data, int timesAffected, int p
 	notifyDataGrid();
 }
 
-OpenFileError M_SubClass::checkFile(String^ path, int& encoding, String^& name){
+OpenFileError M_SubClass::checkFile(String^ path, int& encoding, String^& name, int& type){
 	I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
 	I_DAOSub^ dao = fac->getDAOSub();
 	
-	OpenFileError result = dao->checkFile(path,encoding,name);
+	OpenFileError result = dao->checkFile(path,encoding,name,type);
 	delete dao;
 	return result;
 }

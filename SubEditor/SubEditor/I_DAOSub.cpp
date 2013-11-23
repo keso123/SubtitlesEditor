@@ -96,7 +96,7 @@ bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubData^ sub){
 	return true;
 }
 
-OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name){
+OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, int& type){
 	/*
 	bool result = true;
 	int ind = 0;
@@ -158,6 +158,7 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name){
 			}
 			fs->Close();
 			name = info->Name;
+			type = SubtitlesType::SRT;
 			return OpenFileError::OpenFileErrorOK;
 		}else{
 			return OpenFileError::fileExtensionError;

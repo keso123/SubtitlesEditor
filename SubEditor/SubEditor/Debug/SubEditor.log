@@ -1,20 +1,18 @@
-﻿Compilación iniciada a las 22/11/2013 20:01:01.
+﻿Compilación iniciada a las 23/11/2013 14:45:19.
      1>Proyecto "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" en el nodo 2 (Build destinos).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib I_DAOFactory.cpp I_DAOSub.cpp M_BFactory.cpp M_ObservableForm.cpp M_ObserverForm.cpp M_SubClass.cpp V_Controller.cpp V_MainForm.cpp V_TimeShiftForm.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib I_DAOFactory.cpp I_DAOSub.cpp M_BFactory.cpp M_SubClass.cpp V_Controller.cpp V_MainForm.cpp
          I_DAOFactory.cpp
          I_DAOSub.cpp
      1>I_DAOSub.cpp(32): warning C4101: 'e' : variable local sin referencia
      1>I_DAOSub.cpp(34): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(166): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(168): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(170): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(172): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(174): warning C4101: 'e' : variable local sin referencia
-     1>I_DAOSub.cpp(176): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(167): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(169): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(171): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(173): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(175): warning C4101: 'e' : variable local sin referencia
+     1>I_DAOSub.cpp(177): warning C4101: 'e' : variable local sin referencia
          M_BFactory.cpp
-         M_ObservableForm.cpp
-         M_ObserverForm.cpp
          M_SubClass.cpp
          V_Controller.cpp
          V_MainForm.cpp
@@ -22,11 +20,8 @@
                  c:\users\keso\git\subeditor\subeditor\subeditor\M_ObserverForm.h(24) : vea la declaración de 'M_ObserverForm'
      1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(120): warning C4101: 'rows' : variable local sin referencia
      1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(330): warning C4101: 'e' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(959): warning C4101: 'e' : variable local sin referencia
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(1107): warning C4101: 'e' : variable local sin referencia
-         V_TimeShiftForm.cpp
-     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_TimeShiftForm.h(100): warning C4677: 'setObserver': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_ObserverForm'
-                 c:\users\keso\git\subeditor\subeditor\subeditor\M_ObserverForm.h(24) : vea la declaración de 'M_ObserverForm'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(960): warning C4101: 'e' : variable local sin referencia
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\V_MainForm.h(1108): warning C4101: 'e' : variable local sin referencia
          Generando código...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\SubEditor.V_DebugForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_MainForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_TimeShiftForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\I_DAOFactory.obj
@@ -49,4 +44,4 @@
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:05.52
+Tiempo transcurrido 00:00:08.32

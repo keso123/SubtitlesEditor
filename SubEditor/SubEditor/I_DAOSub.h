@@ -38,6 +38,6 @@ public:
 
 	bool loadSubtitles(System::IO::StreamReader^ file, M_SubData^ sub);
 	bool saveSubtitles(System::IO::StreamWriter^ file, M_SubData^ sub);
-	OpenFileError checkFile(String^ path, int& encoding, String^& name);
+	OpenFileError checkFile(String^ path, int& encoding, String^& name, int& type);
 };
 

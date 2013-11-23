@@ -48,11 +48,11 @@ void V_Controller::newSubtitles(M_ObserverForm^ form){
 	delete subClass;
 }
 
-void V_Controller::openSubtitles(M_ObserverForm^ form, System::IO::StreamReader^ file, int encoding, String^ path, String^ name){
+void V_Controller::openSubtitles(M_ObserverForm^ form, System::IO::StreamReader^ file, int encoding, String^ path, String^ name, int type){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
-	subClass->openSubtitles(file,encoding,path,name);
+	subClass->openSubtitles(file,encoding,path,name,type);
 	delete subClass;
 }
 
@@ -64,12 +64,12 @@ void V_Controller::saveSubtitles(M_ObserverForm^ form, System::IO::StreamWriter^
 	delete subClass;
 }
 
-OpenFileError V_Controller::checkFile(M_ObserverForm^ form,String^ path, int& encoding, String^& name){
+OpenFileError V_Controller::checkFile(M_ObserverForm^ form,String^ path, int& encoding, String^& name, int& type){
 	M_BFactory^ factory = M_BFactory::getBFactory();
 	M_SubClass^ subClass = factory->getSubClass();
 	subClass->addObserver(form);
 
-	OpenFileError result = subClass->checkFile(path,encoding,name);
+	OpenFileError result = subClass->checkFile(path,encoding,name,type);
 	delete subClass;
 	return result;
 }

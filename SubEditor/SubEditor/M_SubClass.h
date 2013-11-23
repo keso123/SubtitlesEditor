@@ -36,7 +36,7 @@ public:
 	virtual ~M_SubClass();
 
 	void newSubtitles();
-	void openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name);
+	void openSubtitles(System::IO::StreamReader^ file, int encoding, String^ path, String^ name, int type);
 	void saveSubtitles(System::IO::StreamWriter^ file,M_SubData^ data);
 	void editSubtitle(M_SubData^ data);
 	void editSubtitleText(M_SubData^ data, int pos, String^ start, String^ end, String^ text);
@@ -50,6 +50,6 @@ public:
 	void shiftBackwardForward(M_SubData^ data, int timesAffected, int pos, String^ time);
 	void shiftBackwardBackward(M_SubData^ data, int timesAffected, int pos, String^ time);
 
-	OpenFileError checkFile(String^ path, int& encoding, String^& name);
+	OpenFileError checkFile(String^ path, int& encoding, String^& name, int& type);
 };
 
