@@ -293,11 +293,19 @@ namespace SubEditor {
 				 }
 				 V_Controller^ c = V_Controller::getController();
 				 try{
-					 System::IO::StreamWriter^ file;/*
-					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
+					 System::IO::StreamWriter^ file;
+					 int encoding = TextFileEncoding::NoBOMencoding;
+					 int type = SubtitlesType::SRT;
+					 String^ name = "Untitled";
+					 int result = c->checkFile(this,path,encoding,name,type);
+					 if(result == OpenFileError::OpenFileErrorOK){
+					 }else if(result == OpenFileError::fileNotFoundError){
+						 encoding = subData->getEncoding();
+					 }
+					 if(encoding == TextFileEncoding::NoBOMencoding)
 						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
 					 else{
-						 switch (subData->getEncoding())
+						 switch (encoding)
 						 {
 						 case TextFileEncoding::UTF8:
 							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
@@ -318,8 +326,8 @@ namespace SubEditor {
 							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
 							 break;
 						 }
-					 }*/
-					 file = gcnew System::IO::StreamWriter(path,false);
+					 }
+					 //file = gcnew System::IO::StreamWriter(path,false);
 					 c->saveSubtitles(this,file,subData);
 					 file->Close();
 					 //Set all
@@ -558,6 +566,7 @@ private: System::ComponentModel::IContainer^  components;
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			this->exitToolStripMenuItem->Size = System::Drawing::Size(169, 22);
 			this->exitToolStripMenuItem->Text = L"Exit";
+			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &V_MainForm::exitToolStripMenuItem_Click);
 			// 
 			// editToolStripMenuItem
 			// 
@@ -926,16 +935,23 @@ private: System::ComponentModel::IContainer^  components;
 					 System::Windows::Forms::DialogResult result = askSaveSubtitles();
 					 if(result == System::Windows::Forms::DialogResult::Yes){
 						 if(!saveSubtitles()) return;
+						 delete subData;
 						 rowIndex = 0;
 						 V_Controller^ c = V_Controller::getController();
 						 c->newSubtitles(this);
 					 }else if(result == System::Windows::Forms::DialogResult::No){
+						 delete subData;
 						 rowIndex = 0;
 						 V_Controller^ c = V_Controller::getController();
 						 c->newSubtitles(this);
 					 }else{
 						 return;
 					 }
+				 }else{
+					delete subData;
+					rowIndex = 0;
+					V_Controller^ c = V_Controller::getController();
+					c->newSubtitles(this);
 				 }
 			 }
 private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1118,6 +1134,9 @@ private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  se
 		 }
 private: System::Void saveSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 saveSubtitles();
+		 }
+private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 this->Close();
 		 }
 };
 }

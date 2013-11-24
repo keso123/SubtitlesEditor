@@ -88,8 +88,9 @@ bool I_DAOSub::saveSubtitles(System::IO::StreamWriter^ file, M_SubData^ sub){
 		aux = sub->getCurrent()->sStart+" --> "+sub->getCurrent()->sEnd;
 		file->WriteLine(aux);
 		aux = sub->getCurrent()->text;
-		file->WriteLine(aux);
-		file->WriteLine();
+		file->WriteLine(aux->Substring(0,aux->Length-1));
+		//file->WriteLine("\r\n");
+		file->WriteLine("");
 		sub->moveNext();
 		i++;
 	}
