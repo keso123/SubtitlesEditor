@@ -38,7 +38,7 @@ private: ref struct node{
 			node^ next;
 			node^ prev;
 		 };
-private:
+protected:
 	int counter;
 	node^ currentNode;
 	node^ firstNode;

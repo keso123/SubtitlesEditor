@@ -32,7 +32,7 @@ ref class M_SubDataSRT : public M_SubData
 			 String^ sEnd;
 			 String^ text;
 		 };*/
-private: ref struct node{
+/*private: ref struct node{
 			M_SubData::nodeData^ data;
 			node^ next;
 			node^ prev;
@@ -45,7 +45,7 @@ private:
 	String^ path;
 	int encoding;
 	String^ name;
-
+	*/
 public:
 	M_SubDataSRT(void);
 	virtual ~M_SubDataSRT(void);

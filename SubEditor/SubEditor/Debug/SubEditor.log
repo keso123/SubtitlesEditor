@@ -1,9 +1,34 @@
-﻿Compilación iniciada a las 25/11/2013 14:38:32.
+﻿Compilación iniciada a las 26/11/2013 20:21:52.
      1>Proyecto "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" en el nodo 2 (Build destinos).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.0\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib M_SubDataASS.cpp
+         M_SubDataASS.cpp
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(43): warning C4677: 'currentNode': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubData::node'
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(36) : vea la declaración de 'M_SubData::node'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(44): warning C4677: 'firstNode': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubData::node'
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(36) : vea la declaración de 'M_SubData::node'
+     1>c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(45): warning C4677: 'lastNode': la firma de un miembro no privado contiene un tipo privado de ensamblado de 'M_SubData::node'
+                 c:\users\keso\git\subeditor\subeditor\subeditor\M_SubData.h(36) : vea la declaración de 'M_SubData::node'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe" /INCREMENTAL /NOLOGO /ASSEMBLYRESOURCE:Debug\SubEditor.V_DebugForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_MainForm.resources /ASSEMBLYRESOURCE:Debug\SubEditor.V_TimeShiftForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.pdb" /ASSEMBLYDEBUG /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"main" /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 Debug\I_DAOFactory.obj
+         Debug\I_DAOSub.obj
+         Debug\M_BFactory.obj
+         Debug\M_ObservableForm.obj
+         Debug\M_ObserverForm.obj
+         Debug\M_Properties.obj
+         Debug\M_SubClass.obj
+         Debug\M_SubData.obj
+         Debug\M_SubDataASS.obj
+         Debug\M_SubDataClass.obj
+         Debug\M_SubDataSRT.obj
+         Debug\V_Controller.obj
+         Debug\V_DebugForm.obj
+         Debug\V_MainForm.obj
+         Debug\V_TimeShiftForm.obj
+         "Debug\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
          SubEditor.vcxproj -> C:\Users\keso\GIT\SubEditor\SubEditor\Debug\SubEditor.exe
      1>Compilación del proyecto terminada "C:\Users\keso\GIT\SubEditor\SubEditor\SubEditor\SubEditor.vcxproj" (Build destinos).
 
 Compilación correcta.
 
-Tiempo transcurrido 00:00:00.49
+Tiempo transcurrido 00:00:05.12
