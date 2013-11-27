@@ -1083,53 +1083,64 @@ private: System::Void shiftTimesTimToolStripMenuItem_Click(System::Object^  send
 			 timeForm->ShowDialog();
 		 }
 private: System::Void saveSubtitlesAsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 String^ path;
 			 if(this->saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK){
-				 V_Controller^ c = V_Controller::getController();
-
-				 String^ path = saveFileDialog1->FileName;
-				 try{
-					 System::IO::StreamWriter^ file;/*
-					 if(subData->getEncoding() == TextFileEncoding::NoBOMencoding)
-						 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
-					 else{
-						 switch (subData->getEncoding())
-						 {
-						 case TextFileEncoding::UTF8:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
-							 break;
-						 case TextFileEncoding::UTF16B:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::BigEndianUnicode);
-							 break;
-						 case TextFileEncoding::UTF16L:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::Unicode);
-							 break;
-						 case TextFileEncoding::UTF32B:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF32);
-							 break;
-						 case TextFileEncoding::UTF7:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
-							 break;
-						 default:
-							 file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
-							 break;
-						 }
-					 }*/
-					 file = gcnew System::IO::StreamWriter(path,false);
-					 c->saveSubtitles(this,file,subData);
-					 isSave = true;
-					 subData->setPath(path);
-					 System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
-					 subData->setName(info->Name);
-					 file->Close();
-				 }catch(Exception^ e){
-					 if(DEBUG){
-						debug = SubEditor::V_DebugForm::getDebugger();
-						debug->Show();
-						debug->insertLine("M_SubClass::saveSubtitles");
-						debug->insertLine("Error al guardar el archivo");
+			 	path = saveFileDialog1->FileName;
+			 }else{
+				return;//not save
+			 }
+			 V_Controller^ c = V_Controller::getController();
+			 try{
+				System::IO::StreamWriter^ file;
+				int encoding = TextFileEncoding::NoBOMencoding;
+				int type = SubtitlesType::SRT;
+				String^ name = "Untitled";
+				int result = c->checkFile(this,path,encoding,name,type);
+				if(result == OpenFileError::OpenFileErrorOK){
+				}else if(result == OpenFileError::fileNotFoundError){
+					encoding = subData->getEncoding();
+				}
+				if(encoding == TextFileEncoding::NoBOMencoding)
+					file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+				else{
+					switch (encoding)
+					{
+					case TextFileEncoding::UTF8:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+						break;
+					case TextFileEncoding::UTF16B:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::BigEndianUnicode);
+ 						break;
+					case TextFileEncoding::UTF16L:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::Unicode);
+ 						break;
+					case TextFileEncoding::UTF32B:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF32);
+						break;
+					case TextFileEncoding::UTF7:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF7);
+						break;
+					default:
+						file = gcnew System::IO::StreamWriter(path,false,System::Text::Encoding::UTF8);
+						break;
 					}
-				 }finally{
-				 }
+				}
+				//file = gcnew System::IO::StreamWriter(path,false);
+				c->saveSubtitles(this,file,subData);
+				file->Close();
+				//Set all
+				isSave = true;
+				subData->setPath(path);
+				System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
+				subData->setName(info->Name);
+			 }catch(Exception^ e){
+				if(DEBUG){
+				debug = SubEditor::V_DebugForm::getDebugger();
+				debug->Show();
+				debug->insertLine("M_SubClass::saveSubtitles");
+				debug->insertLine("Error al guardar el archivo");
+				}
+			 }finally{
 			 }
 		 }
 private: System::Void saveSubtitlesToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
