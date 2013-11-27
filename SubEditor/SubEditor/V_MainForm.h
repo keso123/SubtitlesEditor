@@ -1136,7 +1136,21 @@ private: System::Void saveSubtitlesToolStripMenuItem_Click(System::Object^  send
 			 saveSubtitles();
 		 }
 private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Close();
+			 if(!isSave && subData->size() > 1){
+					 System::Windows::Forms::DialogResult result = askSaveSubtitles();
+					 if(result == System::Windows::Forms::DialogResult::Yes){
+						 if(!saveSubtitles()) return;
+						 this->Close();
+					 }else if(result == System::Windows::Forms::DialogResult::No){
+						 this->Close();
+					 }else if(result == System::Windows::Forms::DialogResult::Cancel){
+						 //this->Close();
+						 return;
+					 }
+				 }else{
+					this->Close();
+				 }
+			 
 		 }
 };
 }
