@@ -161,6 +161,9 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, in
 			name = info->Name;
 			type = SubtitlesType::SRT;
 			return OpenFileError::OpenFileErrorOK;
+		}else if(String::Compare(info->Extension,".ass") == 0){
+			type = SubtitlesType::ASS;
+			return OpenFileError::OpenFileErrorOK;
 		}else{
 			return OpenFileError::fileExtensionError;
 		}
@@ -178,4 +181,8 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, in
 	}catch(System::IO::FileNotFoundException^ e){
 		return OpenFileError::fileNotFoundError;
 	}//more exceptions for the constructors filestream and binaryreader
+}
+
+bool I_DAOSub::loadASS(System::IO::StreamReader^ file, M_SubData^ sub){
+	return true;
 }

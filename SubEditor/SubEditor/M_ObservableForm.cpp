@@ -56,3 +56,6 @@ void M_ObservableForm::notifySaveOK(){
 void M_ObservableForm::notifySaveError(){
 	observer->saveError();
 }
+void M_ObservableForm::notifyOpenError(){
+	observer->openError();
+}

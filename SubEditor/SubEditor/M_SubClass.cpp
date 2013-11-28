@@ -63,6 +63,19 @@ void M_SubClass::openSubtitles(System::IO::StreamReader^ file, int encoding, Str
 			notifyDataGrid();
 		}else{
 			delete dao;
+			notifyOpenError();
+		}
+	}else if(type == SubtitlesType::ASS){
+		M_SubData^ sub = gcnew M_SubDataASS();
+
+		I_DAOFactory^ fac = I_DAOFactory::getDAOFactory();
+		I_DAOSub^ dao = fac->getDAOSub();
+		if(dao->loadASS(file,sub)){
+			delete dao;
+			notifySubData(sub);
+			notifyDataGrid();
+		}else{
+			delete dao;
 		}
 	}
 }

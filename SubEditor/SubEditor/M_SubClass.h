@@ -22,6 +22,7 @@
 //#include "M_SubDataClass.h"
 #include "M_SubData.h"
 #include "M_SubDataSRT.h"
+#include "M_SubDataASS.h"
 #include "I_DAOFactory.h"
 #include "V_DebugForm.h"
 

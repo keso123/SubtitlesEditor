@@ -34,5 +34,6 @@ public:
 	virtual void updateSubData(int shiftMode, int mode, int rowsAffected, int timesAffected, String^ time)=0;
 	virtual void saveOK()=0;
 	virtual void saveError()=0;
+	virtual void openError()=0;
 };
 

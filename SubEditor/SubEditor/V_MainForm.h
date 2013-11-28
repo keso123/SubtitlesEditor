@@ -200,6 +200,13 @@ namespace SubEditor {
 					debug->insertLine("Error al guardar");
 				}
 			}
+	public: virtual void openError(){
+				if(DEBUG){
+					debug = V_DebugForm::getDebugger();
+					debug->Show();
+					debug->insertLine("Error al abrir fichero no valido");
+				}
+			}
 	//
 	// private methods
 	//
@@ -974,7 +981,13 @@ private: System::Void openSubtitlesToolStripMenuItem_Click(System::Object^  send
 						c->openSubtitles(this,file,encoding,path,name,type);
 						file->Close();
 					}catch(Exception^ e){
-						MessageBox::Show("Error al abrir");
+						//MessageBox::Show("Error al abrir");
+						if(DEBUG){
+							debug = SubEditor::V_DebugForm::getDebugger();
+							debug->Show();
+							debug->insertLine("M_SubClass::openSubtitles");
+							debug->insertLine("Error al abrir archivo, archivo no valido");
+						}
 					}finally{
 
 					}

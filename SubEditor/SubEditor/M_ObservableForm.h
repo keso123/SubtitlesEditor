@@ -36,5 +36,6 @@ public:
 	void notifyNotErase();
 	void notifySaveOK();
 	void notifySaveError();
+	void notifyOpenError();
 };
 
