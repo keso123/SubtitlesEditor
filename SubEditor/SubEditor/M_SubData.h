@@ -32,6 +32,12 @@ public: ref struct nodeData{
 			 String^ sEnd;
 			 String^ text;
 			 //more stuff
+			 int layer;
+			 String^ style;//struct
+			 int marginL;
+			 int marginR;
+			 int marginV;
+			 String^ effect;
 		 };
 private: ref struct node{
 			M_SubData::nodeData^ data;

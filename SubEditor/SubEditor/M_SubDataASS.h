@@ -24,6 +24,20 @@ using namespace System;
 
 ref class M_SubDataASS : public M_SubData
 {
+private:
+	//script info
+	String^ title;
+	String^ originalScript;
+	String^ version;
+	String^ type;
+	String^ collisions;
+	int playResY;
+	int playDepth;
+	String^ timer;
+	int videoAspectRatio;
+	int videoZoom;
+	int position;
+	//styles?¿?
 public:
 	M_SubDataASS(void);
 	virtual ~M_SubDataASS(void);

@@ -59,6 +59,12 @@ Class M_SubData+nodeData: AutoLayout, AnsiClass, Class, NestedPublic, BeforeFiel
     System.String sStart : Public
     System.String sEnd : Public
     System.String text : Public
+    Int32 layer : Public
+    System.String style : Public
+    Int32 marginL : Public
+    Int32 marginR : Public
+    Int32 marginV : Public
+    System.String effect : Public
 Class SubEditor.V_DebugForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
   Methods:
