@@ -119,6 +119,13 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, in
 		System::IO::FileInfo^ info = gcnew System::IO::FileInfo(path);
 		//check extension
 		if(String::Compare(info->Extension,".srt") == 0){
+			type = SubtitlesType::SRT;
+		}else if(String::Compare(info->Extension,".ass") == 0){
+			type = SubtitlesType::ASS;
+			//return OpenFileError::OpenFileErrorOK;
+		}else{
+			return OpenFileError::fileExtensionError;
+		}
 			
 			//check enconding
 			System::IO::FileStream^ fs = gcnew System::IO::FileStream(path, System::IO::FileMode::Open);
@@ -159,14 +166,9 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, in
 			}
 			fs->Close();
 			name = info->Name;
-			type = SubtitlesType::SRT;
+			
 			return OpenFileError::OpenFileErrorOK;
-		}else if(String::Compare(info->Extension,".ass") == 0){
-			type = SubtitlesType::ASS;
-			return OpenFileError::OpenFileErrorOK;
-		}else{
-			return OpenFileError::fileExtensionError;
-		}
+		
 		
 	}catch(System::Security::SecurityException^ e){
 		return OpenFileError::permissionsError;
@@ -183,6 +185,19 @@ OpenFileError I_DAOSub::checkFile(String^ path, int& encoding, String^& name, in
 	}//more exceptions for the constructors filestream and binaryreader
 }
 
+bool  I_DAOSub::parseScriptInfo(System::IO::StreamReader^ file, M_SubData^ sub){
+	return true;
+}
+bool  I_DAOSub::parseStyles(System::IO::StreamReader^ file, M_SubData^ sub){
+	return true;
+}
+bool  I_DAOSub::parseEvents(System::IO::StreamReader^ file, M_SubData^ sub){
+	return true;
+}
+
 bool I_DAOSub::loadASS(System::IO::StreamReader^ file, M_SubData^ sub){
+	if(parseScriptInfo(file,sub) == false) return false;
+	if(parseStyles(file,sub) == false) return false;
+	if(parseEvents(file,sub) == false) return false;
 	return true;
 }

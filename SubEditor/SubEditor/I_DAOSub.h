@@ -32,6 +32,10 @@ private:
 	bool parseStartEnd(String^ line, M_SubData::nodeData^ data);
 	bool parseText(System::IO::StreamReader^ file, M_SubData::nodeData^ data);
 
+	bool parseScriptInfo(System::IO::StreamReader^ file, M_SubData^ sub);
+	bool parseStyles(System::IO::StreamReader^ file, M_SubData^ sub);
+	bool parseEvents(System::IO::StreamReader^ file, M_SubData^ sub);
+
 public:
 	I_DAOSub(void);
 	virtual ~I_DAOSub(void);
